@@ -1399,14 +1399,14 @@ function renderContact() {
               📧 ईमेल द्वारे पाठवा (Send via Email)
             </button>
 
-            <div class="grid grid-cols-3 gap-1.5 pt-1">
-              <button type="button" onclick="window.shareContactWhatsApp('9320091566')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded-xl text-[0.7rem] text-center flex items-center justify-center gap-1 transition-colors">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
+              <button type="button" onclick="window.shareContactWhatsApp('9320091566')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-[0.7rem] text-center flex items-center justify-center gap-1.5 transition-colors">
                 💬 हर्शल नेरकर
               </button>
-              <button type="button" onclick="window.shareContactWhatsApp('9004604944')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded-xl text-[0.7rem] text-center flex items-center justify-center gap-1 transition-colors">
+              <button type="button" onclick="window.shareContactWhatsApp('9004604944')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-[0.7rem] text-center flex items-center justify-center gap-1.5 transition-colors">
                 💬 मल्हार तांबे
               </button>
-              <button type="button" onclick="window.shareContactWhatsApp('9870701239')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2 px-2 rounded-xl text-[0.7rem] text-center flex items-center justify-center gap-1 transition-colors">
+              <button type="button" onclick="window.shareContactWhatsApp('9870701239')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-[0.7rem] text-center flex items-center justify-center gap-1.5 transition-colors">
                 💬 योगेश अहिनावे
               </button>
             </div>
@@ -1417,9 +1417,9 @@ function renderContact() {
         <div id="contact-form-status"></div>
 
         <!-- Tracker Analytics Quick Button -->
-        <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap justify-between items-center gap-2 text-xs">
-          <span class="text-gray-500 font-mono text-[0.7rem]">📧 रिपोर्ट ईमेल: harshalnerkar66@gmail.com</span>
-          <button type="button" onclick="window.openTrackerModal()" class="bg-gray-900 hover:bg-black text-goldIdol-300 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition-all shadow-sm">
+        <div class="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs">
+          <span class="text-gray-500 font-mono text-xs sm:text-[0.7rem] truncate w-full sm:w-auto">📧 रिपोर्ट: harshalnerkar66@gmail.com</span>
+          <button type="button" onclick="window.openTrackerModal()" class="w-full sm:w-auto bg-gray-900 hover:bg-black text-goldIdol-300 font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
             📊 ट्रॅफिक & व्हिजिटर ट्रॅकर
           </button>
         </div>
@@ -1563,24 +1563,24 @@ window.openTrackerModal = function() {
 
   const modalHtml = `
   <div id="tracker-analytics-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto shadow-2xl border border-goldIdol-300">
-      <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
-        <div>
-          <h3 class="text-xl font-bold font-display text-darkVelvet-900 flex items-center gap-2">
-            📊 वेबसाईट व्हिजिटर आणि ट्रॅफिक ट्रॅकर (Website Tracker)
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-5 md:p-6 max-h-[90vh] overflow-y-auto shadow-2xl border border-goldIdol-300">
+      <div class="flex items-start justify-between border-b border-gray-200 pb-4 mb-4 gap-2">
+        <div class="flex-1">
+          <h3 class="text-lg sm:text-xl font-bold font-display text-darkVelvet-900 flex flex-wrap items-center gap-1.5 sm:gap-2 leading-tight">
+            📊 वेबसाईट व्हिजिटर आणि ट्रॅफिक ट्रॅकर
           </h3>
-          <p class="text-xs text-gray-500 font-mono">रिपोर्ट ईमेल आयडी: harshalnerkar66@gmail.com</p>
+          <p class="text-[0.65rem] sm:text-xs text-gray-500 font-mono mt-1 break-all">रिपोर्ट ईमेल: harshalnerkar66@gmail.com</p>
         </div>
-        <button onclick="document.getElementById('tracker-analytics-modal').remove()" class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 font-bold">✕</button>
+        <button onclick="document.getElementById('tracker-analytics-modal').remove()" class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 font-bold flex items-center justify-center">✕</button>
       </div>
 
       <!-- Current Session Live Card -->
-      <div class="bg-gradient-to-r from-pinkIdol-600 to-darkVelvet-900 text-white rounded-2xl p-4 mb-5 shadow-lg">
-        <span class="bg-amber-400 text-darkVelvet-950 font-bold text-[0.65rem] px-2.5 py-0.5 rounded-full uppercase tracking-wider">🔴 Active Visitor Live Tracking</span>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
-          <div>
-            <p class="text-[0.7rem] text-pink-200">ट्रॅफिक चॅनेल (Channel)</p>
-            <p class="font-bold text-sm truncate" title="${channel}">${channel}</p>
+      <div class="bg-gradient-to-r from-pinkIdol-600 to-darkVelvet-900 text-white rounded-2xl p-4 md:p-5 mb-5 shadow-lg">
+        <span class="bg-amber-400 text-darkVelvet-950 font-bold text-[0.6rem] sm:text-[0.65rem] px-2.5 py-0.5 rounded-full uppercase tracking-wider">🔴 Active Visitor Tracking</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-4">
+          <div class="overflow-hidden">
+            <p class="text-[0.65rem] sm:text-[0.7rem] text-pink-200">ट्रॅफिक चॅनेल (Channel)</p>
+            <p class="font-bold text-xs sm:text-sm truncate" title="${channel}">${channel}</p>
           </div>
           <div>
             <p class="text-[0.7rem] text-pink-200">घालवलेला वेळ (Time Spent)</p>
@@ -1609,18 +1609,20 @@ window.openTrackerModal = function() {
 
       <!-- Recent Sessions Log -->
       <div class="mb-5">
-        <h4 class="font-bold text-sm text-gray-800 mb-2">📜 मागील व्हिजिटर सेशन्स (${logs.length} नोंदणीकृत सेशन्स)</h4>
-        <div class="max-h-40 overflow-y-auto space-y-2 text-xs">
+        <h4 class="font-bold text-xs sm:text-sm text-gray-800 mb-2">📜 मागील व्हिजिटर सेशन्स (${logs.length} नोंदणीकृत सेशन्स)</h4>
+        <div class="max-h-48 overflow-y-auto space-y-2.5 text-xs">
           ${logs.map(s => `
-            <div class="bg-gray-50 p-2.5 rounded-lg border border-gray-200 flex justify-between items-center">
+            <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
               <div>
-                <span class="font-bold text-pinkIdol-600">${s.channel}</span>
-                <span class="text-gray-500 font-mono ml-2">(${s.device})</span>
-                <div class="text-[0.7rem] text-gray-500">विभाग: ${s.sections.join(', ')}</div>
+                <div class="flex flex-wrap items-center gap-1.5 mb-1">
+                  <span class="font-bold text-pinkIdol-600 text-[0.75rem]">${s.channel}</span>
+                  <span class="text-gray-500 font-mono text-[0.65rem] bg-gray-200 px-1.5 py-0.5 rounded">${s.device}</span>
+                </div>
+                <div class="text-[0.65rem] sm:text-[0.7rem] text-gray-500 break-all leading-tight">विभाग: ${s.sections.join(', ')}</div>
               </div>
-              <div class="text-right">
-                <span class="font-bold text-darkVelvet-900">${s.durationFormatted}</span>
-                <div class="text-[0.65rem] text-gray-400">${s.date}</div>
+              <div class="text-left sm:text-right flex sm:flex-col justify-between sm:justify-center items-center sm:items-end">
+                <span class="font-bold text-darkVelvet-900 text-[0.75rem] sm:text-sm">${s.durationFormatted}</span>
+                <div class="text-[0.6rem] text-gray-400 mt-0.5">${s.date}</div>
               </div>
             </div>
           `).join('')}
