@@ -88,6 +88,9 @@ var lang = localStorage.getItem('sg_lang') || 'mr';
 var currentArchiveYear = '2022';
 var financeUnlocked = localStorage.getItem('sg_finance_unlocked') === 'true';
 var financeAccessRequests = JSON.parse(localStorage.getItem('sg_finance_requests') || '[]');
+var trackerStartTime = Date.now();
+var activeSecondsSpent = 0;
+var visitedSections = new Set(['#home']);
 
 function t(key) { return (i18n[lang] && i18n[lang][key]) || (i18n.en[key]) || key; }
 
@@ -1427,9 +1430,6 @@ function renderContact() {
 // ============================================
 // WEBSITE VISITOR & TRAFFIC CHANNEL TRACKER
 // ============================================
-var trackerStartTime = Date.now();
-var activeSecondsSpent = 0;
-var visitedSections = new Set(['#home']);
 
 function getTrafficSource() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -1462,6 +1462,7 @@ function getDeviceType() {
 }
 
 function initWebsiteTracker() {
+  if (!visitedSections) visitedSections = new Set(['#home']);
   window.addEventListener('hashchange', () => {
     if (window.location.hash) {
       visitedSections.add(window.location.hash);
@@ -1483,15 +1484,16 @@ function initWebsiteTracker() {
 function recordAnalyticsEvent() {
   const channel = getTrafficSource();
   const logs = JSON.parse(localStorage.getItem('sg_visitor_analytics_v1') || '[]');
+  if (!visitedSections) visitedSections = new Set(['#home']);
   
   const currentSession = {
-    sessionId: 'SESS-' + trackerStartTime,
+    sessionId: 'SESS-' + (trackerStartTime || Date.now()),
     date: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
     channel: channel,
     device: getDeviceType(),
     screen: `${window.innerWidth}x${window.innerHeight}`,
-    durationSeconds: activeSecondsSpent,
-    durationFormatted: Math.floor(activeSecondsSpent / 60) + 'm ' + (activeSecondsSpent % 60) + 's',
+    durationSeconds: activeSecondsSpent || 0,
+    durationFormatted: Math.floor((activeSecondsSpent || 0) / 60) + 'm ' + ((activeSecondsSpent || 0) % 60) + 's',
     sections: Array.from(visitedSections),
     targetEmail: 'harshalnerkar66@gmail.com'
   };
