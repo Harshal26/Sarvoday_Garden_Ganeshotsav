@@ -1,0 +1,6 @@
+[
+  { "id": "con-001", "role": "Mandal Committee Leader", "name": "Harshal Nerkar", "phone": "9320091566", "icon": "👑", "description": "Core Mandal Lead — Festival Coordination & Suggestions" },
+  { "id": "con-002", "role": "Mandal Committee Member", "name": "Malhar Tambe", "phone": "9004604944", "icon": "📋", "description": "Core Mandal Member — Event Management & Inquiries" },
+  { "id": "con-003", "role": "Mandal Committee Member", "name": "Yogesh Ahinave", "phone": "9870701239", "icon": "🤝", "description": "Core Mandal Member — Public Relations & Support" },
+  { "id": "con-004", "role": "Emergency Contact", "name": "Emergency Helpline", "phone": "112", "icon": "🚨", "description": "Police / Fire / Ambulance — All emergencies" }
+]

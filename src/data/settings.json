@@ -1,0 +1,15 @@
+{
+  "societyName": "Shree Ganesh Residency",
+  "festivalName": "Ganpati Mahotsav 2026",
+  "tagline": "Celebrating Faith • Unity • Tradition • Community",
+  "visarjanDate": "2026-09-22T18:00:00+05:30",
+  "sthapanaDate": "2026-09-12T10:00:00+05:30",
+  "address": "Shree Ganesh Residency, Near City Mall, Andheri West, Mumbai - 400058, Maharashtra",
+  "mapUrl": "https://maps.google.com/?q=Shree+Ganesh+Residency+Andheri+West+Mumbai",
+  "websiteUrl": "https://ganpati2026.example.com",
+  "totalFlats": 56,
+  "totalWings": 2,
+  "totalFloors": 7,
+  "flatsPerFloor": 4,
+  "wings": ["A", "B"]
+}

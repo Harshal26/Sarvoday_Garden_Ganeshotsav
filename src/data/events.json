@@ -1,0 +1,167 @@
+[
+  {
+    "id": "evt-001",
+    "name": "Ganpati Sthapana",
+    "date": "2026-09-12",
+    "day": "Saturday",
+    "time": "10:00 AM",
+    "location": "Society Mandap",
+    "category": "Special",
+    "description": "Installation of Ganpati idol with traditional puja vidhi",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-002",
+    "name": "Morning Aarti",
+    "date": "2026-09-12",
+    "day": "Saturday",
+    "time": "7:00 AM",
+    "location": "Society Mandap",
+    "category": "Aarti",
+    "description": "Daily morning aarti with Ganpati Atharvashirsha",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-003",
+    "name": "Evening Maha Aarti",
+    "date": "2026-09-12",
+    "day": "Saturday",
+    "time": "7:00 PM",
+    "location": "Society Mandap",
+    "category": "Aarti",
+    "description": "Daily evening Maha Aarti with dhol and community participation",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-004",
+    "name": "Decoration Setup",
+    "date": "2026-09-11",
+    "day": "Friday",
+    "time": "3:00 PM",
+    "location": "Society Compound",
+    "category": "Community",
+    "description": "Volunteers needed for mandap decoration and lighting setup",
+    "status": "completed"
+  },
+  {
+    "id": "evt-005",
+    "name": "Children's Drawing Competition",
+    "date": "2026-09-15",
+    "day": "Tuesday",
+    "time": "4:00 PM",
+    "location": "Society Hall",
+    "category": "Children",
+    "description": "Drawing competition for kids aged 4-14 years. Theme: My Ganpati",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-006",
+    "name": "Fancy Dress Competition",
+    "date": "2026-09-16",
+    "day": "Wednesday",
+    "time": "5:00 PM",
+    "location": "Society Mandap",
+    "category": "Children",
+    "description": "Fancy dress competition for children. Theme: Mythological Characters",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-007",
+    "name": "Rangoli Competition",
+    "date": "2026-09-17",
+    "day": "Thursday",
+    "time": "10:00 AM",
+    "location": "Society Compound",
+    "category": "Competition",
+    "description": "Rangoli making competition. Teams of 2-3. Theme: Ganpati & Nature",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-008",
+    "name": "Cultural Evening",
+    "date": "2026-09-18",
+    "day": "Friday",
+    "time": "6:30 PM",
+    "location": "Society Mandap",
+    "category": "Cultural",
+    "description": "Dance, music, drama performances by society residents",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-009",
+    "name": "Chess & Carrom Tournament",
+    "date": "2026-09-14",
+    "day": "Monday",
+    "time": "3:00 PM",
+    "location": "Society Hall",
+    "category": "Competition",
+    "description": "Indoor games tournament for all age groups",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-010",
+    "name": "Cricket Match",
+    "date": "2026-09-19",
+    "day": "Saturday",
+    "time": "7:00 AM",
+    "location": "Nearby Ground",
+    "category": "Competition",
+    "description": "Wing A vs Wing B friendly cricket match",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-011",
+    "name": "Quiz Night",
+    "date": "2026-09-20",
+    "day": "Sunday",
+    "time": "7:30 PM",
+    "location": "Society Mandap",
+    "category": "Cultural",
+    "description": "General knowledge and Ganpati-themed quiz for families",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-012",
+    "name": "Talent Show",
+    "date": "2026-09-19",
+    "day": "Saturday",
+    "time": "5:00 PM",
+    "location": "Society Mandap",
+    "category": "Cultural",
+    "description": "Open mic and talent showcase for all age groups",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-013",
+    "name": "Modak Making Workshop",
+    "date": "2026-09-13",
+    "day": "Sunday",
+    "time": "11:00 AM",
+    "location": "Society Hall",
+    "category": "Community",
+    "description": "Learn traditional modak making with experienced cooks from our society",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-014",
+    "name": "Gauri Puja",
+    "date": "2026-09-16",
+    "day": "Wednesday",
+    "time": "11:00 AM",
+    "location": "Society Mandap",
+    "category": "Special",
+    "description": "Special Gauri puja and celebration",
+    "status": "upcoming"
+  },
+  {
+    "id": "evt-015",
+    "name": "Visarjan Procession",
+    "date": "2026-09-22",
+    "day": "Tuesday",
+    "time": "4:00 PM",
+    "location": "Society to Visarjan Point",
+    "category": "Special",
+    "description": "Grand Visarjan procession with dhol-tasha, flower decoration and community participation. गणपती बाप्पा मोरया, पुढच्या वर्षी लवकर या!",
+    "status": "upcoming"
+  }
+]

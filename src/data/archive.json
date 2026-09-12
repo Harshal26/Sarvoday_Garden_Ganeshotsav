@@ -1,0 +1,64 @@
+{
+  "2025": [
+    {
+      "id": "arch-2025-1",
+      "title": "2025 Grand Visarjan Procession",
+      "url": "https://picsum.photos/seed/visarjan2025/600/400",
+      "category": "Visarjan",
+      "caption": "Dhol Tasha pathak and grand community Visarjan procession of 2025"
+    },
+    {
+      "id": "arch-2025-2",
+      "title": "2025 Floral Decoration Theme",
+      "url": "https://picsum.photos/seed/flower2025/600/400",
+      "category": "Decoration",
+      "caption": "Lotus and marigold traditional mandap decoration"
+    },
+    {
+      "id": "arch-2025-3",
+      "title": "2025 Maha Prasad Feast",
+      "url": "https://picsum.photos/seed/prasad2025/600/400",
+      "category": "Community Feast",
+      "caption": "Grand society Maha Prasad served to over 300 residents"
+    }
+  ],
+  "2024": [
+    {
+      "id": "arch-2024-1",
+      "title": "2024 Eco-Friendly Clay Bappa",
+      "url": "https://picsum.photos/seed/eco2024/600/400",
+      "category": "Sthapana",
+      "caption": "100% Eco-friendly Shaadu clay Ganpati idol of 2024"
+    },
+    {
+      "id": "arch-2024-2",
+      "title": "2024 Children's Cultural Night",
+      "url": "https://picsum.photos/seed/kids2024/600/400",
+      "category": "Cultural",
+      "caption": "Children performing traditional Lavani and Lezim dance"
+    },
+    {
+      "id": "arch-2024-3",
+      "title": "2024 Society Rangoli Contest",
+      "url": "https://picsum.photos/seed/rangoli2024/600/400",
+      "category": "Competition",
+      "caption": "Award-winning Ganesha Rangoli artwork in the society courtyard"
+    }
+  ],
+  "2023": [
+    {
+      "id": "arch-2023-1",
+      "title": "2023 Silver Jubilee Celebration",
+      "url": "https://picsum.photos/seed/silver2023/600/400",
+      "category": "Special",
+      "caption": "Celebrating 5 years of Shree Ganesh Residency Ganpati Mahotsav"
+    },
+    {
+      "id": "arch-2023-2",
+      "title": "2023 Royal Palace Mandap Theme",
+      "url": "https://picsum.photos/seed/palace2023/600/400",
+      "category": "Decoration",
+      "caption": "Replica of ancient Kolhapur temple architecture"
+    }
+  ]
+}

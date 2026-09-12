@@ -1,0 +1,74 @@
+[
+  {
+    "id": "ann-001",
+    "title": "Ganpati Sthapana Ceremony",
+    "description": "Ganpati idol will be installed at the society mandap on 12th September at 10:00 AM. All residents are requested to attend with their families. Prasad distribution after the ceremony.",
+    "date": "2026-09-12",
+    "category": "Important",
+    "priority": "high",
+    "status": "active"
+  },
+  {
+    "id": "ann-002",
+    "title": "Evening Maha Aarti — Daily",
+    "description": "Daily Maha Aarti will be performed at 7:00 PM at the society mandap. All residents are welcome to participate. Special aarti arrangements on Fridays.",
+    "date": "2026-09-12",
+    "category": "Aarti",
+    "priority": "normal",
+    "status": "active"
+  },
+  {
+    "id": "ann-003",
+    "title": "Cultural Program Registration Open",
+    "description": "Registration is now open for the cultural evening on 18th September. Interested participants can register with the Cultural Coordinator. Categories: Dance, Song, Drama, Comedy, Instrument.",
+    "date": "2026-09-13",
+    "category": "Cultural",
+    "priority": "normal",
+    "status": "active"
+  },
+  {
+    "id": "ann-004",
+    "title": "Children's Drawing Competition",
+    "description": "Drawing competition for children aged 4-14 years on 15th September at 4:00 PM. All art materials will be provided. Prizes for all participants!",
+    "date": "2026-09-14",
+    "category": "Competition",
+    "priority": "normal",
+    "status": "active"
+  },
+  {
+    "id": "ann-005",
+    "title": "Visarjan Schedule Announced",
+    "description": "Ganpati Visarjan will be on 22nd September (Anant Chaturdashi). The procession starts at 4:00 PM from the society mandap. Details about dhol-tasha, flower decoration and route will be shared soon.",
+    "date": "2026-09-15",
+    "category": "Important",
+    "priority": "high",
+    "status": "active"
+  },
+  {
+    "id": "ann-006",
+    "title": "Contribution Collection Update",
+    "description": "Thank you to all residents who have contributed to the Ganpati fund. Collection is still open. Please contact the Treasurer for payment details.",
+    "date": "2026-09-11",
+    "category": "Finance",
+    "priority": "normal",
+    "status": "active"
+  },
+  {
+    "id": "ann-007",
+    "title": "Rangoli Competition",
+    "description": "Rangoli competition on 17th September at 10:00 AM in the society compound. Teams of 2-3 members. Theme: Ganpati & Nature. Materials provided.",
+    "date": "2026-09-14",
+    "category": "Competition",
+    "priority": "normal",
+    "status": "active"
+  },
+  {
+    "id": "ann-008",
+    "title": "Prasad Sponsorship",
+    "description": "Residents interested in sponsoring evening prasad on any day during the festival can contact the Event Coordinator. First come first served.",
+    "date": "2026-09-10",
+    "category": "General",
+    "priority": "normal",
+    "status": "active"
+  }
+]

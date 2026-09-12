@@ -1,0 +1,47 @@
+[
+  {
+    "id": "com-001",
+    "name": "Harshal Nerkar",
+    "position": "President / Core Lead",
+    "phone": "9320091566",
+    "description": "Leading the Sarvoday Garden Mitra Mandal. Coordinates all festival planning, suggestions & overall administration.",
+    "photo": "",
+    "flat": "Sarvoday Garden"
+  },
+  {
+    "id": "com-002",
+    "name": "Malhar Tambe",
+    "position": "Core Committee Member",
+    "phone": "9004604944",
+    "description": "Manages festival events, vendor coordination and community engagement.",
+    "photo": "",
+    "flat": "Sarvoday Garden"
+  },
+  {
+    "id": "com-003",
+    "name": "Yogesh Ahinave",
+    "position": "Core Committee Member",
+    "phone": "9870701239",
+    "description": "Oversees public relations, financial transparency and resident queries.",
+    "photo": "",
+    "flat": "Sarvoday Garden"
+  },
+  {
+    "id": "com-004",
+    "name": "Santosh Hande",
+    "position": "Core Committee Member",
+    "phone": "",
+    "description": "Manages daily mandap setup, volunteer teams, and crowd coordination.",
+    "photo": "",
+    "flat": "Sarvoday Garden"
+  },
+  {
+    "id": "com-005",
+    "name": "Sachin Jadhav",
+    "position": "Core Committee Member",
+    "phone": "",
+    "description": "Plans cultural programs, competitions and evening mahaprasad distribution.",
+    "photo": "",
+    "flat": "Sarvoday Garden"
+  }
+]

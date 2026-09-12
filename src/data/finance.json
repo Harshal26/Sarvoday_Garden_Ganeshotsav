@@ -1,0 +1,18 @@
+{
+  "income": [
+    { "id": "inc-001", "category": "Resident Contributions", "amount": 168000, "date": "2026-09-01", "description": "Collection from 56 flats (₹3,000 per flat)" },
+    { "id": "inc-002", "category": "Donations", "amount": 25000, "date": "2026-09-05", "description": "Voluntary donations from residents and well-wishers" },
+    { "id": "inc-003", "category": "Sponsors", "amount": 15000, "date": "2026-09-08", "description": "Sponsorship from local businesses" },
+    { "id": "inc-004", "category": "Other", "amount": 5000, "date": "2026-09-10", "description": "Prasad sponsorship and miscellaneous" }
+  ],
+  "expenses": [
+    { "id": "exp-001", "category": "Ganpati Idol", "amount": 35000, "date": "2026-09-05", "description": "Eco-friendly Ganpati idol with decoration base" },
+    { "id": "exp-002", "category": "Decoration", "amount": 45000, "date": "2026-09-10", "description": "Mandap decoration, flowers, lights, thermocol art" },
+    { "id": "exp-003", "category": "Sound & Lighting", "amount": 20000, "date": "2026-09-11", "description": "Sound system rental and stage lighting for 11 days" },
+    { "id": "exp-004", "category": "Prasad", "amount": 22000, "date": "2026-09-12", "description": "Daily prasad, modak and special day offerings" },
+    { "id": "exp-005", "category": "Cultural Programs", "amount": 15000, "date": "2026-09-12", "description": "Prizes, props, stage, anchoring and cultural event setup" },
+    { "id": "exp-006", "category": "Visarjan", "amount": 18000, "date": "2026-09-12", "description": "Dhol-tasha, flowers, gulal, transport for visarjan" },
+    { "id": "exp-007", "category": "Electricity", "amount": 8000, "date": "2026-09-12", "description": "Additional electricity charges for lighting and sound" },
+    { "id": "exp-008", "category": "Miscellaneous", "amount": 10000, "date": "2026-09-12", "description": "Puja items, cleaning, volunteer refreshments, printing" }
+  ]
+}

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "comp-001",
+    "name": "Drawing Competition",
+    "date": "2026-09-15",
+    "time": "4:00 PM",
+    "location": "Society Hall",
+    "eligibility": "Children aged 4-14 years",
+    "category": "Children",
+    "status": "Open",
+    "description": "Theme: My Ganpati. All art materials provided. Prizes for all participants!",
+    "winner": ""
+  },
+  {
+    "id": "comp-002",
+    "name": "Fancy Dress Competition",
+    "date": "2026-09-16",
+    "time": "5:00 PM",
+    "location": "Society Mandap",
+    "eligibility": "Children aged 3-10 years",
+    "category": "Children",
+    "status": "Open",
+    "description": "Theme: Mythological Characters. Dress your little ones as their favorite deity!",
+    "winner": ""
+  },
+  {
+    "id": "comp-003",
+    "name": "Rangoli Competition",
+    "date": "2026-09-17",
+    "time": "10:00 AM",
+    "location": "Society Compound",
+    "eligibility": "All residents (teams of 2-3)",
+    "category": "Creative",
+    "status": "Open",
+    "description": "Theme: Ganpati & Nature. Basic materials provided. Teams must bring special colors.",
+    "winner": ""
+  },
+  {
+    "id": "comp-004",
+    "name": "Chess Tournament",
+    "date": "2026-09-14",
+    "time": "3:00 PM",
+    "location": "Society Hall",
+    "eligibility": "All age groups",
+    "category": "Indoor Games",
+    "status": "Open",
+    "description": "Open chess tournament. Swiss format, 3 rounds. Trophies for top 3.",
+    "winner": ""
+  },
+  {
+    "id": "comp-005",
+    "name": "Carrom Tournament",
+    "date": "2026-09-14",
+    "time": "4:00 PM",
+    "location": "Society Hall",
+    "eligibility": "All age groups",
+    "category": "Indoor Games",
+    "status": "Open",
+    "description": "Singles carrom tournament. Knockout format. Trophies for top 3.",
+    "winner": ""
+  },
+  {
+    "id": "comp-006",
+    "name": "Cricket Match — Wing A vs Wing B",
+    "date": "2026-09-19",
+    "time": "7:00 AM",
+    "location": "Nearby Ground",
+    "eligibility": "All residents (10 per team)",
+    "category": "Outdoor Sports",
+    "status": "Upcoming",
+    "description": "The classic Wing A vs Wing B cricket match! T10 format.",
+    "winner": ""
+  },
+  {
+    "id": "comp-007",
+    "name": "Quiz Night",
+    "date": "2026-09-20",
+    "time": "7:30 PM",
+    "location": "Society Mandap",
+    "eligibility": "Families (teams of 3-4)",
+    "category": "Knowledge",
+    "status": "Upcoming",
+    "description": "General knowledge, Ganpati trivia, and fun rounds. Exciting prizes!",
+    "winner": ""
+  },
+  {
+    "id": "comp-008",
+    "name": "Talent Show",
+    "date": "2026-09-19",
+    "time": "5:00 PM",
+    "location": "Society Mandap",
+    "eligibility": "All age groups",
+    "category": "Cultural",
+    "status": "Open",
+    "description": "Sing, dance, perform comedy, play an instrument — show your talent!",
+    "winner": ""
+  },
+  {
+    "id": "comp-009",
+    "name": "Cultural Program",
+    "date": "2026-09-18",
+    "time": "6:30 PM",
+    "location": "Society Mandap",
+    "eligibility": "Registered performers",
+    "category": "Cultural",
+    "status": "Open",
+    "description": "Grand cultural evening with dance, drama and music performances.",
+    "winner": ""
+  }
+]
