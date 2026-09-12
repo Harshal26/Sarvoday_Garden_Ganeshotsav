@@ -1425,6 +1425,8 @@ function renderContact() {
         </div>
       </div>
     </div>`;
+
+  initScrollReveal();
 }
 
 // ============================================
