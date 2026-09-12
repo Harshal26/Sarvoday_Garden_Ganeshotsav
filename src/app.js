@@ -184,6 +184,7 @@ function initApp() {
   try { applyLanguage(lang); } catch(e) { console.error('applyLanguage:', e); }
   try { initLightbox(); } catch(e) { console.error('initLightbox:', e); }
   try { initScrollReveal(); } catch(e) { console.error('initScrollReveal:', e); }
+  try { initWebsiteTracker(); } catch(e) { console.error('initWebsiteTracker:', e); }
 }
 
 if (document.readyState === 'loading') {
@@ -470,7 +471,7 @@ window.handleFinanceAccessRequest = function(event) {
   financeAccessRequests.unshift(newReq);
   localStorage.setItem('sg_finance_requests', JSON.stringify(financeAccessRequests));
 
-  const adminEmail = 'harshalnerkar@gmail.com';
+  const adminEmail = 'harshalnerkar66@gmail.com';
   const mailSubject = `[Finance Access Request] Request from ${name} (${flat})`;
   const mailBody = `Sarvoday Garden Mitra Mandal — Ganeshotsav 2026
 
@@ -1099,7 +1100,7 @@ window.handleContactFormSubmit = async function(event) {
   const userEmail = form.email.value;
   const subject = form.subject.value;
   const message = form.message.value;
-  const recipientEmail = form.recipientEmail ? form.recipientEmail.value : 'harshalnerkar@gmail.com';
+  const recipientEmail = form.recipientEmail ? form.recipientEmail.value : 'harshalnerkar66@gmail.com';
 
   const formattedSubject = `[Ganpati Mandal ${category}] ${subject} - From ${name} (${flat})`;
   const formattedBody = `Sarvoday Garden Mitra Mandal — Ganeshotsav 2026
@@ -1374,7 +1375,7 @@ function renderContact() {
           <!-- Recipient Email Notice & Input -->
           <div class="bg-gray-50 border border-gray-200 rounded-xl p-3">
             <label class="block text-[0.7rem] font-bold text-gray-600 uppercase tracking-wider mb-1">📧 प्राप्तकर्ता ईमेल (Committee Recipient Email):</label>
-            <input type="email" name="recipientEmail" value="harshalnerkar@gmail.com" class="w-full border border-gray-200 rounded-lg p-2 text-xs font-mono bg-white text-gray-700" title="संदेश या ईमेल आयडीवर पाठवला जाईल" />
+            <input type="email" name="recipientEmail" value="harshalnerkar66@gmail.com" class="w-full border border-gray-200 rounded-lg p-2 text-xs font-mono bg-white text-gray-700" title="संदेश या ईमेल आयडीवर पाठवला जाईल" />
           </div>
 
           <!-- Subject -->
@@ -1411,9 +1412,230 @@ function renderContact() {
 
         <!-- Status Container -->
         <div id="contact-form-status"></div>
+
+        <!-- Tracker Analytics Quick Button -->
+        <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap justify-between items-center gap-2 text-xs">
+          <span class="text-gray-500 font-mono text-[0.7rem]">📧 रिपोर्ट ईमेल: harshalnerkar66@gmail.com</span>
+          <button type="button" onclick="window.openTrackerModal()" class="bg-gray-900 hover:bg-black text-goldIdol-300 font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 transition-all shadow-sm">
+            📊 ट्रॅफिक & व्हिजिटर ट्रॅकर
+          </button>
+        </div>
       </div>
     </div>`;
 }
+
+// ============================================
+// WEBSITE VISITOR & TRAFFIC CHANNEL TRACKER
+// ============================================
+var trackerStartTime = Date.now();
+var activeSecondsSpent = 0;
+var visitedSections = new Set(['#home']);
+
+function getTrafficSource() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const utmSource = urlParams.get('utm_source') || urlParams.get('ref') || urlParams.get('source');
+  
+  if (utmSource) {
+    const src = utmSource.toLowerCase();
+    if (src.includes('whatsapp') || src === 'wa') return 'WhatsApp Group / Chat';
+    if (src.includes('facebook') || src === 'fb') return 'Facebook Share';
+    if (src.includes('instagram') || src === 'ig') return 'Instagram Bio / Story';
+    if (src.includes('qr')) return 'Society Noticeboard QR Code';
+    return `Campaign (${utmSource})`;
+  }
+
+  const ref = document.referrer ? document.referrer.toLowerCase() : '';
+  if (!ref) return 'Direct Visit (Bookmark / Typed Address)';
+  if (ref.includes('whatsapp') || ref.includes('wa.me')) return 'WhatsApp Chat Link';
+  if (ref.includes('facebook') || ref.includes('fb.com')) return 'Facebook Referral';
+  if (ref.includes('instagram')) return 'Instagram Referral';
+  if (ref.includes('google')) return 'Google Search';
+  if (ref.includes('bing') || ref.includes('yahoo')) return 'Search Engine';
+  return `External Web Link (${new URL(document.referrer).hostname})`;
+}
+
+function getDeviceType() {
+  const ua = navigator.userAgent;
+  if (/mobile/i.test(ua)) return 'Mobile Device';
+  if (/ipad|tablet/i.test(ua)) return 'Tablet';
+  return 'Desktop / Laptop';
+}
+
+function initWebsiteTracker() {
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash) {
+      visitedSections.add(window.location.hash);
+      recordAnalyticsEvent();
+    }
+  });
+  if (window.location.hash) visitedSections.add(window.location.hash);
+
+  setInterval(() => {
+    activeSecondsSpent++;
+    if (activeSecondsSpent % 5 === 0) {
+      recordAnalyticsEvent();
+    }
+  }, 1000);
+
+  recordAnalyticsEvent();
+}
+
+function recordAnalyticsEvent() {
+  const channel = getTrafficSource();
+  const logs = JSON.parse(localStorage.getItem('sg_visitor_analytics_v1') || '[]');
+  
+  const currentSession = {
+    sessionId: 'SESS-' + trackerStartTime,
+    date: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
+    channel: channel,
+    device: getDeviceType(),
+    screen: `${window.innerWidth}x${window.innerHeight}`,
+    durationSeconds: activeSecondsSpent,
+    durationFormatted: Math.floor(activeSecondsSpent / 60) + 'm ' + (activeSecondsSpent % 60) + 's',
+    sections: Array.from(visitedSections),
+    targetEmail: 'harshalnerkar66@gmail.com'
+  };
+
+  const existingIdx = logs.findIndex(s => s.sessionId === currentSession.sessionId);
+  if (existingIdx >= 0) {
+    logs[existingIdx] = currentSession;
+  } else {
+    logs.unshift(currentSession);
+  }
+  
+  if (logs.length > 50) logs.pop();
+  localStorage.setItem('sg_visitor_analytics_v1', JSON.stringify(logs));
+}
+
+window.sendTrackerReportToEmail = function() {
+  const logs = JSON.parse(localStorage.getItem('sg_visitor_analytics_v1') || '[]');
+  const channel = getTrafficSource();
+  const durationFormatted = Math.floor(activeSecondsSpent / 60) + 'm ' + (activeSecondsSpent % 60) + 's';
+  const sectionsList = Array.from(visitedSections).join(', ') || '#home';
+
+  const channelCounts = {};
+  logs.forEach(s => {
+    channelCounts[s.channel] = (channelCounts[s.channel] || 0) + 1;
+  });
+  const channelSummary = Object.entries(channelCounts)
+    .map(([ch, count]) => `• ${ch}: ${count} visit(s)`)
+    .join('\n');
+
+  const subject = `[Website Traffic & Tracker Report] Sarvoday Garden Ganeshotsav 2026`;
+  const body = `Sarvoday Garden Mitra Mandal — Website Traffic & Visitor Analytics Report
+
+--------------------------------------------------
+TARGET RECIPIENT EMAIL: harshalnerkar66@gmail.com
+REPORT GENERATED: ${new Date().toLocaleString('en-IN')}
+--------------------------------------------------
+
+📊 CURRENT ACTIVE VISITOR SESSION:
+• Traffic Channel Source: ${channel}
+• Device / Resolution: ${getDeviceType()} (${window.innerWidth}x${window.innerHeight})
+• Time Spent on Site: ${durationFormatted} (${activeSecondsSpent} seconds)
+• Sections Visited in Session: ${sectionsList}
+
+--------------------------------------------------
+📈 TOTAL TRAFFIC & CHANNEL BREAKDOWN (${logs.length} Total Recorded Sessions):
+${channelSummary || '• Direct Visit: 1 visit'}
+
+--------------------------------------------------
+📜 RECENT VISITOR SESSIONS:
+${logs.slice(0, 5).map((s, i) => `#${i+1} [${s.date}] Channel: ${s.channel} | Device: ${s.device} | Time Spent: ${s.durationFormatted} | Sections: ${s.sections.join(', ')}`).join('\n\n')}
+
+--------------------------------------------------
+Report automatically compiled by Sarvoday Garden Ganeshotsav Website Tracker.
+Target Recipient: harshalnerkar66@gmail.com`;
+
+  const mailtoUrl = `mailto:harshalnerkar66@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  window.open(mailtoUrl, '_blank');
+};
+
+window.openTrackerModal = function() {
+  const channel = getTrafficSource();
+  const durationFormatted = Math.floor(activeSecondsSpent / 60) + 'm ' + (activeSecondsSpent % 60) + 's';
+  const logs = JSON.parse(localStorage.getItem('sg_visitor_analytics_v1') || '[]');
+
+  const existingModal = document.getElementById('tracker-analytics-modal');
+  if (existingModal) existingModal.remove();
+
+  const modalHtml = `
+  <div id="tracker-analytics-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 max-h-[90vh] overflow-y-auto shadow-2xl border border-goldIdol-300">
+      <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
+        <div>
+          <h3 class="text-xl font-bold font-display text-darkVelvet-900 flex items-center gap-2">
+            📊 वेबसाईट व्हिजिटर आणि ट्रॅफिक ट्रॅकर (Website Tracker)
+          </h3>
+          <p class="text-xs text-gray-500 font-mono">रिपोर्ट ईमेल आयडी: harshalnerkar66@gmail.com</p>
+        </div>
+        <button onclick="document.getElementById('tracker-analytics-modal').remove()" class="w-8 h-8 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 font-bold">✕</button>
+      </div>
+
+      <!-- Current Session Live Card -->
+      <div class="bg-gradient-to-r from-pinkIdol-600 to-darkVelvet-900 text-white rounded-2xl p-4 mb-5 shadow-lg">
+        <span class="bg-amber-400 text-darkVelvet-950 font-bold text-[0.65rem] px-2.5 py-0.5 rounded-full uppercase tracking-wider">🔴 Active Visitor Live Tracking</span>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3">
+          <div>
+            <p class="text-[0.7rem] text-pink-200">ट्रॅफिक चॅनेल (Channel)</p>
+            <p class="font-bold text-sm truncate" title="${channel}">${channel}</p>
+          </div>
+          <div>
+            <p class="text-[0.7rem] text-pink-200">घालवलेला वेळ (Time Spent)</p>
+            <p class="font-bold text-sm text-goldIdol-300">${durationFormatted}</p>
+          </div>
+          <div>
+            <p class="text-[0.7rem] text-pink-200">डिव्हाइस (Device)</p>
+            <p class="font-bold text-sm">${getDeviceType()}</p>
+          </div>
+          <div>
+            <p class="text-[0.7rem] text-pink-200">स्क्रीन साईज</p>
+            <p class="font-bold text-sm">${window.innerWidth}x${window.innerHeight}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Channel Summary -->
+      <div class="mb-5">
+        <h4 class="font-bold text-sm text-gray-800 mb-2">📈 चॅनेल ट्रॅफिक स्रोत (Traffic Channels & Referral)</h4>
+        <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 text-xs space-y-1.5 font-mono text-gray-700">
+          <p>• <strong>WhatsApp Channel:</strong> व्हॉट्सॲप मेसेज / ग्रुप लिंक द्वारे आलेले युझर्स (?utm_source=whatsapp)</p>
+          <p>• <strong>Direct Visit:</strong> ब्राऊझरमध्ये थेट URL टाईप करून आलेले सदस्य</p>
+          <p>• <strong>QR Code Scan:</strong> नोटीस बोर्डावरील क्यूआर कोड स्कॅन</p>
+        </div>
+      </div>
+
+      <!-- Recent Sessions Log -->
+      <div class="mb-5">
+        <h4 class="font-bold text-sm text-gray-800 mb-2">📜 मागील व्हिजिटर सेशन्स (${logs.length} नोंदणीकृत सेशन्स)</h4>
+        <div class="max-h-40 overflow-y-auto space-y-2 text-xs">
+          ${logs.map(s => `
+            <div class="bg-gray-50 p-2.5 rounded-lg border border-gray-200 flex justify-between items-center">
+              <div>
+                <span class="font-bold text-pinkIdol-600">${s.channel}</span>
+                <span class="text-gray-500 font-mono ml-2">(${s.device})</span>
+                <div class="text-[0.7rem] text-gray-500">विभाग: ${s.sections.join(', ')}</div>
+              </div>
+              <div class="text-right">
+                <span class="font-bold text-darkVelvet-900">${s.durationFormatted}</span>
+                <div class="text-[0.65rem] text-gray-400">${s.date}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <!-- Action Button -->
+      <div class="pt-2">
+        <button onclick="window.sendTrackerReportToEmail()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+          📧 हा ट्रॅकर रिपोर्ट harshalnerkar66@gmail.com वर ईमेल द्वारे पाठवा
+        </button>
+      </div>
+    </div>
+  </div>`;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+};
 
 // ============================================
 // LIGHTBOX
