@@ -1033,151 +1033,369 @@ function renderReceipts() {
   if (btnGen) {
     btnGen.addEventListener('click', () => {
       const flatId = flatSelect ? flatSelect.value : '1-104';
-      const record = varganiCollection.find(item => item.flat === flatId) || varganiCollection[3];
+      const record = varganiCollection.find(item => item.flat === flatId);
       const preview = document.getElementById('rec-preview');
 
       if (!preview) return;
 
-      // IF PAID: Render Printable Receipt matching Sample Template
-      if (record.status === 'Paid') {
-        const words = numberToMarathiWords(record.paid);
-        const receiptNo = `SGR-2026-${record.flat.replace('-', '')}`;
-        const dateStr = '12/09/2026';
+      // IF UNPAID OR PENDING: Show Popup and render Pending Notice
+      if (!record || record.status !== 'Paid' || !record.paid || record.paid <= 0) {
+        const pendingRecord = record || { flat: flatId, building: (buildingSelect ? buildingSelect.value : '1'), name: 'निवासी', due: 2000, status: 'Pending' };
+        
+        // Show Popup Modal indicating Vargani is not paid
+        window.showVarganiPendingModal(pendingRecord);
 
-        preview.innerHTML = `
-          <div class="mt-6 border-2 border-goldIdol-400/60 rounded-2xl p-6 md:p-8 bg-gradient-to-b from-white to-pinkIdol-50/20 shadow-2xl relative overflow-hidden" id="printable-receipt">
-            <!-- Mandal Watermark Badge -->
-            <div class="absolute top-4 right-4 bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold px-3 py-1 rounded-full text-xs flex items-center gap-1 shadow-sm">
-              ✓ PAID & VERIFIED (अधिकृत देणगी)
-            </div>
-
-            <!-- Receipt Header -->
-            <div class="text-center border-b-2 border-goldIdol-400/40 pb-4 mb-6">
-              <p class="text-pinkIdol-600 font-bold text-base font-calligraphy">॥ श्री गणेशाय नमः ॥</p>
-              <div class="flex items-center justify-center gap-3 my-2">
-                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pinkIdol-500 to-goldIdol-400 text-white flex items-center justify-center font-bold font-calligraphy text-2xl shadow-md border-2 border-goldIdol-300">
-                  SG
-                </div>
-                <div class="text-center">
-                  <h2 class="text-xl md:text-2xl font-bold font-display text-darkVelvet-900 tracking-wide">Sarvoday Garden Mitra mandal</h2>
-                  <p class="text-xs text-pinkIdol-600 font-semibold mt-0.5">सार्वजनिक गणेशोत्सव २०२६ (सार्वोदय गार्डन सोसायटी)</p>
-                </div>
-              </div>
-              <div class="inline-block bg-pinkIdol-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-sm mt-1 uppercase tracking-wider">
-                ◆ देणगी पावती (Donation Receipt) ◆
-              </div>
-            </div>
-
-            <!-- Receipt Metadata Grid -->
-            <div class="space-y-4 text-sm font-marathi text-gray-800">
-              <div class="flex flex-wrap justify-between items-center bg-white p-3 rounded-xl border border-gray-200">
-                <span><strong>पावती क्रमांक (Receipt No):</strong> <span class="text-pinkIdol-600 font-bold font-mono text-base">${receiptNo}</span></span>
-                <span><strong>दिनांक (Date):</strong> ${dateStr}</span>
-              </div>
-
-              <div class="bg-white p-4 rounded-xl border border-gray-200 space-y-2">
-                <p>
-                  <strong>श्री. / श्रीमती (Received from):</strong> 
-                  <span class="text-gray-900 font-bold text-base border-b-2 border-goldIdol-400 px-2 py-0.5 inline-block min-w-[200px]">
-                    ${record.name || 'फ्लॅटधारक'}
-                  </span>
-                </p>
-
-                <p>
-                  <strong>इमारत व फ्लॅट नंबर (Flat Details):</strong> 
-                  <span class="text-gray-900 font-bold bg-pinkIdol-50 px-2.5 py-1 rounded-md border border-pinkIdol-200 inline-block">
-                    Building ${record.building} — Flat No. ${record.flat}
-                  </span>
-                </p>
-
-                <p>
-                  <strong>भरलेला प्रकार (Payment Mode):</strong> 
-                  <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                    ${record.mode || 'Cash / UPI'} ${record.remarks ? `(${record.remarks})` : ''}
-                  </span>
-                </p>
-              </div>
-
-              <!-- Amount Box -->
-              <div class="bg-gradient-to-r from-pinkIdol-600 to-darkVelvet-700 text-white rounded-xl p-4 text-center shadow-lg">
-                <p class="text-xs uppercase tracking-wider text-goldIdol-300 font-bold mb-1">वर्गणी / देणगी रक्कम (Amount Paid)</p>
-                <p class="text-3xl font-extrabold text-white font-calligraphy">₹ ${record.paid.toLocaleString('en-IN')}</p>
-                <p class="text-xs text-cream/90 mt-1 font-semibold">(${words})</p>
-              </div>
-            </div>
-
-            <!-- Stamp & Signature Row -->
-            <div class="mt-8 pt-6 border-t-2 border-goldIdol-400/40 flex flex-wrap justify-between items-end gap-4 text-xs font-marathi">
-              <div class="text-center">
-                <div class="w-20 h-20 rounded-full border-2 border-dashed border-pinkIdol-500 flex flex-col items-center justify-center p-1 mx-auto text-[0.65rem] font-bold text-pinkIdol-600 bg-pinkIdol-50">
-                  <span>★ SGR 2026 ★</span>
-                  <span class="text-[0.6rem] uppercase">गणेशोत्सव</span>
-                  <span>MANDAL SEAL</span>
-                </div>
-                <p class="text-[0.7rem] text-gray-500 mt-1">अधिकृत मंडळ शिक्का</p>
-              </div>
-
-              <div class="text-center">
-                <p class="font-bold text-gray-900 text-sm mb-1">Harshal Nerkar / Malhar Tambe / Yogesh Ahinave</p>
-                <p class="text-xs text-pinkIdol-600 font-semibold">अध्यक्ष व कार्यकारिणी सदस्य</p>
-                <p class="text-[0.65rem] text-gray-400 mt-0.5">सार्वोदय गार्डन मित्र मंडळ</p>
-              </div>
-            </div>
-
-            <!-- Print Button -->
-            <div class="mt-6 text-center no-print border-t border-gray-200 pt-4">
-              <button onclick="window.print()" class="btn-primary text-sm !py-2.5 !px-6 font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto">
-                🖨️ प्रिंट करा / PDF डाऊनलोड (Print / Save PDF)
-              </button>
-            </div>
-          </div>
-        `;
-      } else {
-        // IF PENDING OR EXPECTED: Render Friendly Pending Notice
+        // Render Friendly Pending Notice in preview
         preview.innerHTML = `
           <div class="mt-6 border-2 border-amber-400 rounded-2xl p-6 bg-gradient-to-b from-white to-amber-50/40 shadow-xl reveal font-marathi">
             <div class="flex items-center gap-3 border-b border-amber-200 pb-4 mb-4">
               <span class="text-3xl">⏳</span>
               <div>
                 <span class="text-xs font-bold text-amber-800 bg-amber-100 px-3 py-1 rounded-full uppercase tracking-wider border border-amber-300">
-                  वर्गणी जमा करणे बाकी आहे (Pending Payment)
+                  वर्गणी जमा करणे बाकी आहे (Vargani Not Paid)
                 </span>
-                <h3 class="font-bold text-lg text-gray-900 mt-1">फ्लॅट नंबर ${record.flat} — ${record.name || 'निवासी'}</h3>
+                <h3 class="font-bold text-lg text-gray-900 mt-1">फ्लॅट नंबर ${pendingRecord.flat} — ${pendingRecord.name || 'निवासी'}</h3>
               </div>
             </div>
 
             <div class="space-y-3 text-sm text-gray-700 mb-6">
-              <p>सदर फ्लॅटची गणेशोत्सव २०२६ ची वर्गणी अद्याप जमा झालेली नाही.</p>
+              <p class="font-semibold text-red-600">⚠️ या फ्लॅटची गणेशोत्सव २०२६ ची वर्गणी अद्याप जमा झालेली नाही. त्यामुळे अधिकृत डिजिटल पावती उपलब्ध नाही.</p>
               <div class="bg-amber-100/60 border border-amber-200 rounded-xl p-4 flex items-center justify-between">
                 <div>
                   <span class="text-xs text-gray-600 block">एकूण देय वर्गणी (Amount Due):</span>
-                  <span class="text-2xl font-extrabold text-amber-900 font-calligraphy">₹ ${record.due.toLocaleString('en-IN')}</span>
+                  <span class="text-2xl font-extrabold text-amber-900 font-calligraphy">₹ ${(pendingRecord.due || 2000).toLocaleString('en-IN')}</span>
                 </div>
                 <span class="text-xs text-amber-800 font-bold bg-white px-3 py-1.5 rounded-lg shadow-sm border border-amber-300">
-                  स्थिती: ${record.status}
+                  स्थिती: ${pendingRecord.status}
                 </span>
               </div>
               <p class="text-xs text-gray-500">
-                वर्गणी जमा करण्यासाठी खालील बटणाद्वारे थेट कोषाध्यक्षांशी संपर्क साधा किंवा मंडाप कार्यालयात वर्गणी जमा करा.
+                वर्गणी जमा करण्यासाठी खालील बटणाद्वारे थेट कोषाध्यक्ष किंवा मंडळ कार्यकर्त्यांशी संपर्क साधा. वर्गणी जमा झाल्यानंतर त्वरित डिजिटल पावती उपलब्ध होईल.
               </p>
             </div>
 
             <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-amber-200">
-              <a href="https://wa.me/919320091566?text=Hello%20Harshal%20Ji%2C%20I%20want%20to%20pay%20Vargani%20for%20Flat%20${record.flat}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center gap-2 transition-colors no-underline">
+              <a href="https://wa.me/919320091566?text=Hello%20Harshal%20Ji%2C%20I%20want%20to%20pay%20Vargani%20for%20Flat%20${pendingRecord.flat}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl text-xs flex items-center gap-2 transition-colors no-underline">
                 💬 कोषाध्यक्षांशी व्हॉट्सॲपवर संपर्क साधा (9320091566)
               </a>
               <a href="tel:9320091566" class="btn-primary !py-2 !px-4 !text-xs font-bold flex items-center gap-1">
-                📞 कॉल करा
+                📞 कॉल करा (9320091566)
               </a>
             </div>
           </div>
         `;
+
+        preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        return;
       }
+
+      // IF PAID: Render Printable Receipt matching Sample Template
+      const words = numberToMarathiWords(record.paid);
+      const receiptNo = `SGR-2026-${record.flat.replace('-', '')}`;
+      const dateStr = '12/09/2026';
+
+      preview.innerHTML = `
+        <div class="mt-6 border-2 border-goldIdol-400/60 rounded-2xl p-6 md:p-8 bg-gradient-to-b from-white to-pinkIdol-50/20 shadow-2xl relative overflow-hidden" id="printable-receipt">
+          <!-- Mandal Watermark Badge -->
+          <div class="absolute top-4 right-4 bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold px-3 py-1 rounded-full text-xs flex items-center gap-1 shadow-sm">
+            ✓ PAID & VERIFIED (अधिकृत देणगी)
+          </div>
+
+          <!-- Receipt Header -->
+          <div class="text-center border-b-2 border-goldIdol-400/40 pb-4 mb-6">
+            <p class="text-pinkIdol-600 font-bold text-base font-calligraphy">॥ श्री गणेशाय नमः ॥</p>
+            <div class="flex items-center justify-center gap-3 my-2">
+              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pinkIdol-500 to-goldIdol-400 text-white flex items-center justify-center font-bold font-calligraphy text-2xl shadow-md border-2 border-goldIdol-300">
+                SG
+              </div>
+              <div class="text-center">
+                <h2 class="text-xl md:text-2xl font-bold font-display text-darkVelvet-900 tracking-wide">Sarvoday Garden Mitra Mandal</h2>
+                <p class="text-xs text-pinkIdol-600 font-semibold mt-0.5">सार्वजनिक गणेशोत्सव २०२६ (सार्वोदय गार्डन सोसायटी)</p>
+              </div>
+            </div>
+            <div class="inline-block bg-pinkIdol-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-sm mt-1 uppercase tracking-wider">
+              ◆ देणगी पावती (Donation Receipt) ◆
+            </div>
+          </div>
+
+          <!-- Receipt Metadata Grid -->
+          <div class="space-y-4 text-sm font-marathi text-gray-800">
+            <div class="flex flex-wrap justify-between items-center bg-white p-3 rounded-xl border border-gray-200">
+              <span><strong>पावती क्रमांक (Receipt No):</strong> <span class="text-pinkIdol-600 font-bold font-mono text-base">${receiptNo}</span></span>
+              <span><strong>दिनांक (Date):</strong> ${dateStr}</span>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-gray-200 space-y-2">
+              <p>
+                <strong>श्री. / श्रीमती (Received from):</strong> 
+                <span class="text-gray-900 font-bold text-base border-b-2 border-goldIdol-400 px-2 py-0.5 inline-block min-w-[200px]">
+                  ${record.name || 'फ्लॅटधारक'}
+                </span>
+              </p>
+
+              <p>
+                <strong>इमारत व फ्लॅट नंबर (Flat Details):</strong> 
+                <span class="text-gray-900 font-bold bg-pinkIdol-50 px-2.5 py-1 rounded-md border border-pinkIdol-200 inline-block">
+                  Building ${record.building} — Flat No. ${record.flat}
+                </span>
+              </p>
+
+              <p>
+                <strong>भरलेला प्रकार (Payment Mode):</strong> 
+                <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  ${record.mode || 'Cash / UPI'} ${record.remarks ? `(${record.remarks})` : ''}
+                </span>
+              </p>
+            </div>
+
+            <!-- Amount Box -->
+            <div class="bg-gradient-to-r from-pinkIdol-600 to-darkVelvet-700 text-white rounded-xl p-4 text-center shadow-lg">
+              <p class="text-xs uppercase tracking-wider text-goldIdol-300 font-bold mb-1">वर्गणी / देणगी रक्कम (Amount Paid)</p>
+              <p class="text-3xl font-extrabold text-white font-calligraphy">₹ ${record.paid.toLocaleString('en-IN')}</p>
+              <p class="text-xs text-cream/90 mt-1 font-semibold">(${words})</p>
+            </div>
+          </div>
+
+          <!-- Stamp & Signature Row -->
+          <div class="mt-8 pt-6 border-t-2 border-goldIdol-400/40 flex flex-wrap justify-between items-end gap-4 text-xs font-marathi">
+            <div class="text-center">
+              <div class="w-20 h-20 rounded-full border-2 border-dashed border-pinkIdol-500 flex flex-col items-center justify-center p-1 mx-auto text-[0.65rem] font-bold text-pinkIdol-600 bg-pinkIdol-50">
+                <span>★ SGR 2026 ★</span>
+                <span class="text-[0.6rem] uppercase">गणेशोत्सव</span>
+                <span>MANDAL SEAL</span>
+              </div>
+              <p class="text-[0.7rem] text-gray-500 mt-1">अधिकृत मंडळ शिक्का</p>
+            </div>
+
+            <div class="text-center">
+              <p class="font-bold text-gray-900 text-sm mb-1">Harshal Nerkar / Malhar Tambe / Yogesh Ahinave</p>
+              <p class="text-xs text-pinkIdol-600 font-semibold">अध्यक्ष व कार्यकारिणी सदस्य</p>
+              <p class="text-[0.65rem] text-gray-400 mt-0.5">सार्वोदय गार्डन मित्र मंडळ</p>
+            </div>
+          </div>
+
+          <!-- Print / Download Button -->
+          <div class="mt-6 text-center no-print border-t border-gray-200 pt-4">
+            <button type="button" onclick="window.printReceipt()" class="btn-primary text-sm !py-2.5 !px-6 font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto">
+              🖨️ फक्त पावती प्रिंट करा / PDF डाऊनलोड (Print / Save Receipt Only)
+            </button>
+            <p class="text-[11px] text-gray-500 mt-1.5 font-sans">★ संपूर्ण वेबसाईट ऐवजी फक्त ही अधिकृत १ पानाची पावती PDF डाऊनलोड / प्रिंट होईल</p>
+          </div>
+        </div>
+      `;
 
       preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
   }
 }
+
+// ============================================
+// POPUP MODAL: VARGANI NOT PAID
+// ============================================
+window.showVarganiPendingModal = function(record) {
+  const existing = document.getElementById('vargani-pending-modal');
+  if (existing) existing.remove();
+
+  const flatLabel = record ? `${record.flat} (${record.name || 'निवासी'})` : 'निवडलेला फ्लॅट';
+  const amountDue = record && record.due ? `₹ ${record.due.toLocaleString('en-IN')}` : '₹ 2,000';
+  const bld = record && record.building ? `Building ${record.building}` : '';
+
+  const modalHtml = `
+    <div id="vargani-pending-modal" class="fixed inset-0 z-[120] bg-black/75 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in font-marathi" role="dialog" aria-modal="true">
+      <div class="bg-white rounded-2xl max-w-md w-full shadow-2xl border-2 border-amber-400 overflow-hidden relative">
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-amber-500 to-amber-600 text-white p-5 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">⚠️</span>
+            <div>
+              <h3 class="font-bold text-lg leading-tight">वर्गणी जमा झालेली नाही</h3>
+              <p class="text-xs text-amber-100 font-sans">Vargani Not Paid / Receipt Unavailable</p>
+            </div>
+          </div>
+          <button type="button" onclick="document.getElementById('vargani-pending-modal').remove()" class="w-8 h-8 rounded-full bg-black/20 hover:bg-black/40 text-white font-bold flex items-center justify-center transition-colors text-lg" aria-label="Close">✕</button>
+        </div>
+
+        <!-- Body -->
+        <div class="p-6 space-y-4">
+          <!-- Status Banner -->
+          <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 flex items-start gap-3">
+            <span class="text-3xl">⏳</span>
+            <div>
+              <p class="text-xs font-bold text-amber-800 uppercase tracking-wider">पावती उपलब्ध नाही</p>
+              <h4 class="font-bold text-gray-900 text-base mt-0.5">${bld} — फ्लॅट नंबर ${flatLabel}</h4>
+              <p class="text-xs text-gray-600 mt-1">या फ्लॅटची गणेशोत्सव २०२६ ची वर्गणी अद्याप जमा झालेली नाही.</p>
+            </div>
+          </div>
+
+          <!-- Important Note -->
+          <div class="bg-gray-50 border border-gray-200 rounded-xl p-4 text-xs space-y-2 text-gray-700">
+            <p class="flex items-start gap-2">
+              <span class="text-amber-600 font-bold">ℹ️</span>
+              <span><strong>पावती कधी मिळेल?</strong> वर्गणी जमा झाल्यानंतर लगेचच सिस्टिममध्ये अधिकृत डिजिटल देणगी पावती उपलब्ध होते.</span>
+            </p>
+            <div class="flex items-center justify-between border-t border-gray-200 pt-2 mt-2">
+              <span class="text-gray-600 font-medium">एकूण देय रक्कम (Amount Due):</span>
+              <span class="text-base font-bold text-amber-900 font-calligraphy">${amountDue}</span>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="space-y-2 pt-2">
+            <a href="https://wa.me/919320091566?text=Hello%20Harshal%20Ji%2C%20I%20want%20to%20pay%20Vargani%20for%20Flat%20${record ? record.flat : ''}" target="_blank" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-sm flex items-center justify-center gap-2 transition-all shadow-md no-underline">
+              <span>💬</span> <span>वर्गणी जमा करण्यासाठी व्हॉट्सॲपवर संपर्क करा</span>
+            </a>
+
+            <div class="grid grid-cols-2 gap-2">
+              <a href="tel:9320091566" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors no-underline">
+                <span>📞</span> <span>हर्षल नेरकर (अध्यक्ष)</span>
+              </a>
+              <button type="button" onclick="document.getElementById('vargani-pending-modal').remove()" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center transition-colors">
+                समजले (Close)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
+};
+
+// ============================================
+// ISOLATED RECEIPT PRINT / PDF DOWNLOAD
+// ============================================
+window.printReceipt = function() {
+  const receiptElem = document.getElementById('printable-receipt');
+  if (!receiptElem) {
+    window.print();
+    return;
+  }
+
+  // Clone receipt and strip interactive print buttons
+  const clone = receiptElem.cloneNode(true);
+  clone.querySelectorAll('.no-print').forEach(el => el.remove());
+
+  // Remove any previously created print iframe
+  let iframe = document.getElementById('receipt-print-iframe');
+  if (iframe) iframe.remove();
+
+  iframe = document.createElement('iframe');
+  iframe.id = 'receipt-print-iframe';
+  iframe.style.position = 'fixed';
+  iframe.style.right = '0';
+  iframe.style.bottom = '0';
+  iframe.style.width = '0';
+  iframe.style.height = '0';
+  iframe.style.border = '0';
+  iframe.style.visibility = 'hidden';
+  document.body.appendChild(iframe);
+
+  const doc = iframe.contentWindow.document;
+  doc.open();
+  doc.write(`
+    <!DOCTYPE html>
+    <html lang="mr">
+    <head>
+      <meta charset="UTF-8" />
+      <title>सार्वोदय गार्डन गणेशोत्सव २०२६ — अधिकृत देणगी पावती</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Noto+Sans+Devanagari:wght@400;600;700;800;900&family=Outfit:wght@400;600;700;800&family=Rozha+One&family=Yatra+One&display=swap" rel="stylesheet" />
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                pinkIdol: { 50: '#FFF0F5', 100: '#FAD0DC', 200: '#F4A6C1', 300: '#E87A90', 400: '#D84B75', 500: '#C42B5B', 600: '#9E1B44', 700: '#751031', DEFAULT: '#E87A90' },
+                goldIdol: { 100: '#FFF9C4', 300: '#FFD700', 400: '#E5C158', 500: '#D4AF37', 700: '#B8860B', DEFAULT: '#FFD700' },
+                blueIdol: { 500: '#0F4C81', 700: '#0B365D', 900: '#061F38', DEFAULT: '#0F4C81' },
+                darkVelvet: { 700: '#380B22', 800: '#2A0618', 900: '#1A030F', DEFAULT: '#2A0618' },
+                cream: { DEFAULT: '#FFF8F5', dark: '#F7EBE8' }
+              },
+              fontFamily: {
+                sans: ['Outfit', 'sans-serif'],
+                marathi: ['Noto Sans Devanagari', 'sans-serif'],
+                calligraphy: ['Yatra One', 'Rozha One', 'Kalam', 'Noto Sans Devanagari', 'serif'],
+                display: ['Yatra One', 'Rozha One', 'serif']
+              }
+            }
+          }
+        }
+      </script>
+      <link rel="stylesheet" href="./src/styles/app.css" />
+      <link rel="stylesheet" href="./src/styles/components.css" />
+      <style>
+        @page {
+          size: A4 portrait;
+          margin: 8mm;
+        }
+        * {
+          box-sizing: border-box;
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+        }
+        html, body {
+          margin: 0 !important;
+          padding: 8px !important;
+          background: #ffffff !important;
+          color: #111827 !important;
+          font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+        }
+        .receipt-container {
+          width: 100%;
+          max-width: 680px;
+          margin: 0 auto;
+        }
+        #printable-receipt {
+          border: 2px solid #E5C158 !important;
+          border-radius: 1.25rem !important;
+          background: #ffffff !important;
+          box-shadow: none !important;
+          padding: 24px !important;
+          page-break-inside: avoid !important;
+          break-inside: avoid !important;
+          position: relative !important;
+        }
+        .text-pinkIdol-600 { color: #9E1B44 !important; }
+        .bg-pinkIdol-50 { background-color: #FFF0F5 !important; }
+        .bg-pinkIdol-500 { background-color: #C42B5B !important; }
+        .bg-pinkIdol-600 { background-color: #9E1B44 !important; }
+        .border-pinkIdol-200 { border-color: #F4A6C1 !important; }
+        .border-pinkIdol-500 { border-color: #C42B5B !important; }
+        .border-goldIdol-300 { border-color: #FFD700 !important; }
+        .border-goldIdol-400 { border-color: #E5C158 !important; }
+        .text-goldIdol-300 { color: #FFD700 !important; }
+        .text-darkVelvet-900 { color: #1A030F !important; }
+        .font-calligraphy { font-family: 'Yatra One', 'Rozha One', 'Kalam', 'Noto Sans Devanagari', serif !important; }
+        .font-marathi { font-family: 'Noto Sans Devanagari', sans-serif !important; }
+        .font-display { font-family: 'Yatra One', 'Rozha One', serif !important; }
+      </style>
+    </head>
+    <body>
+      <div class="receipt-container">
+        ${clone.outerHTML}
+      </div>
+    </body>
+    </html>
+  `);
+  doc.close();
+
+  // Give Tailwind CSS and Google Fonts a moment to render cleanly, then print
+  setTimeout(() => {
+    try {
+      iframe.contentWindow.focus();
+      iframe.contentWindow.print();
+    } catch(err) {
+      console.warn('Iframe print error, falling back to window.print():', err);
+      window.print();
+    }
+  }, 450);
+};
 
 // ============================================
 // CONTACT & SUGGESTION / INQUIRY FORM

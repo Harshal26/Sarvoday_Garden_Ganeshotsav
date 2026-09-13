@@ -727,20 +727,8 @@
 
 /* Print Styles */
 @media print {
-  body * {
-    visibility: hidden;
-  }
-  #printable-receipt, #printable-receipt * {
-    visibility: visible;
-  }
-  #printable-receipt {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    border: 2px solid #000;
-  }
-  .no-print {
+  #navbar, nav, footer, #home, #celebrations, #events, #archive, #members, #finance, #contact, .no-print {
     display: none !important;
   }
 }
+

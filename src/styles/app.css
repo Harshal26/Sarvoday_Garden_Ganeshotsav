@@ -210,10 +210,86 @@
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s, transform 0.6s; }
 .reveal.visible, .visible { opacity: 1 !important; transform: translateY(0) !important; }
 
-/* === Print === */
+/* === Print Rules (Only Receipt is Printed) === */
 @media print {
-  body * { visibility: hidden; }
-  #printable-receipt, #printable-receipt * { visibility: visible; }
-  #printable-receipt { position: absolute; left: 0; top: 0; width: 100%; }
-  .no-print { display: none !important; }
+  @page {
+    size: A4 portrait;
+    margin: 8mm;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+  }
+
+  /* Completely hide every element on the website except receipts section */
+  #navbar,
+  nav,
+  #mobile-menu,
+  #home,
+  #celebrations,
+  #events,
+  #archive,
+  #members,
+  #finance,
+  #contact,
+  footer,
+  #lightbox,
+  .floating-diya,
+  a[href*="wa.me"],
+  #admin-finance-modal,
+  #tracker-analytics-modal,
+  #vargani-pending-modal,
+  .no-print {
+    display: none !important;
+  }
+
+  /* Hide headers and search controls in receipts section */
+  #receipts {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+    min-height: 0 !important;
+  }
+
+  #receipts .section-header,
+  #receipt-container > div > div:first-child,
+  #receipt-container > div > div:nth-child(2) {
+    display: none !important;
+  }
+
+  #receipt-container,
+  #receipt-container > div {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #ffffff !important;
+  }
+
+  /* Format only the printable receipt */
+  #printable-receipt {
+    display: block !important;
+    width: 100% !important;
+    max-width: 680px !important;
+    margin: 0 auto !important;
+    padding: 20px !important;
+    border: 2px solid #E5C158 !important;
+    border-radius: 1rem !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+    background: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #printable-receipt * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
 }
