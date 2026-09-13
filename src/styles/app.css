@@ -214,15 +214,14 @@
 @media print {
   @page {
     size: A4 portrait;
-    margin: 8mm;
+    margin: 6mm;
   }
 
   html, body {
     margin: 0 !important;
     padding: 0 !important;
     background: #ffffff !important;
-    height: auto !important;
-    min-height: 0 !important;
+    height: 100% !important;
     overflow: visible !important;
   }
 
@@ -271,15 +270,21 @@
     background: #ffffff !important;
   }
 
-  /* Format only the printable receipt */
+  /* Format printable receipt to fill the full A4 page */
   #printable-receipt {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
     width: 100% !important;
-    max-width: 680px !important;
-    margin: 0 auto !important;
-    padding: 20px !important;
-    border: 2px solid #E5C158 !important;
-    border-radius: 1rem !important;
+    max-width: 100% !important;
+    min-height: 280mm !important;
+    margin: 0 !important;
+    padding: 24px 28px !important;
+    box-sizing: border-box !important;
+    border: 3px double #d4af37 !important;
+    outline: 1.5px solid #751031 !important;
+    outline-offset: -6px !important;
+    border-radius: 8px !important;
     box-shadow: none !important;
     page-break-inside: avoid !important;
     break-inside: avoid !important;

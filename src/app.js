@@ -1095,91 +1095,181 @@ function renderReceipts() {
       const dateStr = '12/09/2026';
 
       preview.innerHTML = `
-        <div class="mt-6 border-2 border-goldIdol-400/60 rounded-2xl p-6 md:p-8 bg-gradient-to-b from-white to-pinkIdol-50/20 shadow-2xl relative overflow-hidden" id="printable-receipt">
-          <!-- Mandal Watermark Badge -->
-          <div class="absolute top-4 right-4 bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold px-3 py-1 rounded-full text-xs flex items-center gap-1 shadow-sm">
-            ✓ PAID & VERIFIED (अधिकृत देणगी)
-          </div>
-
-          <!-- Receipt Header -->
-          <div class="text-center border-b-2 border-goldIdol-400/40 pb-4 mb-6">
-            <p class="text-pinkIdol-600 font-bold text-base font-calligraphy">॥ श्री गणेशाय नमः ॥</p>
-            <div class="flex items-center justify-center gap-3 my-2">
-              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-pinkIdol-500 to-goldIdol-400 text-white flex items-center justify-center font-bold font-calligraphy text-2xl shadow-md border-2 border-goldIdol-300">
-                SG
-              </div>
-              <div class="text-center">
-                <h2 class="text-xl md:text-2xl font-bold font-display text-darkVelvet-900 tracking-wide">Sarvoday Garden Mitra Mandal</h2>
-                <p class="text-xs text-pinkIdol-600 font-semibold mt-0.5">सार्वजनिक गणेशोत्सव २०२६ (सार्वोदय गार्डन सोसायटी)</p>
-              </div>
-            </div>
-            <div class="inline-block bg-pinkIdol-600 text-white text-xs font-bold px-4 py-1 rounded-full shadow-sm mt-1 uppercase tracking-wider">
-              ◆ देणगी पावती (Donation Receipt) ◆
-            </div>
-          </div>
-
-          <!-- Receipt Metadata Grid -->
-          <div class="space-y-4 text-sm font-marathi text-gray-800">
-            <div class="flex flex-wrap justify-between items-center bg-white p-3 rounded-xl border border-gray-200">
-              <span><strong>पावती क्रमांक (Receipt No):</strong> <span class="text-pinkIdol-600 font-bold font-mono text-base">${receiptNo}</span></span>
-              <span><strong>दिनांक (Date):</strong> ${dateStr}</span>
-            </div>
-
-            <div class="bg-white p-4 rounded-xl border border-gray-200 space-y-2">
-              <p>
-                <strong>श्री. / श्रीमती (Received from):</strong> 
-                <span class="text-gray-900 font-bold text-base border-b-2 border-goldIdol-400 px-2 py-0.5 inline-block min-w-[200px]">
-                  ${record.name || 'फ्लॅटधारक'}
-                </span>
+        <div class="mt-6 border-4 border-double border-goldIdol-500 rounded-2xl p-6 md:p-10 bg-white shadow-2xl relative flex flex-col justify-between min-h-[750px] font-marathi" id="printable-receipt" style="outline: 1.5px solid #751031; outline-offset: -6px;">
+          <div>
+            <!-- Top Sanskrit Prayer -->
+            <div class="text-center border-b border-amber-200 pb-2 mb-4">
+              <p class="text-pinkIdol-700 font-bold text-xs md:text-sm font-calligraphy tracking-wider">
+                ॥ ॐ गं गणपतये नमः ॥ &nbsp;•&nbsp; ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
               </p>
+            </div>
 
-              <p>
-                <strong>इमारत व फ्लॅट नंबर (Flat Details):</strong> 
-                <span class="text-gray-900 font-bold bg-pinkIdol-50 px-2.5 py-1 rounded-md border border-pinkIdol-200 inline-block">
+            <!-- Main Mandal Title & Badge Row -->
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b-2 border-goldIdol-400/50 pb-5 mb-5">
+              <div class="flex items-center gap-4">
+                <!-- Circular SG Emblem -->
+                <div class="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-pinkIdol-600 via-pinkIdol-500 to-goldIdol-400 text-white flex flex-col items-center justify-center font-bold shadow-lg border-2 border-goldIdol-300 flex-shrink-0">
+                  <span class="font-display text-2xl md:text-3xl leading-none">SG</span>
+                  <span class="text-[9px] uppercase tracking-widest text-goldIdol-100 font-sans">MANDAL</span>
+                </div>
+                <div>
+                  <h2 class="text-xl md:text-2xl lg:text-3xl font-bold font-display text-darkVelvet-900 tracking-wide">
+                    Sarvoday Garden Mitra Mandal
+                  </h2>
+                  <p class="text-sm font-bold text-pinkIdol-600 mt-0.5">
+                    सार्वजनिक गणेशोत्सव सोहळा २०२६ (स्थापना वर्ष २०१२)
+                  </p>
+                  <p class="text-xs text-gray-500 mt-0.5">
+                    सर्वोदय गार्डन को-ऑप. हाउसिंग सोसायटी लि., मुंबई-पुणे रोड, ठाणे (प.) ४००६०१
+                  </p>
+                </div>
+              </div>
+
+              <div class="text-right flex flex-col items-center md:items-end">
+                <div class="bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold px-3 py-1 rounded-full text-xs flex items-center gap-1 shadow-sm">
+                  <span>✓ PAID & VERIFIED</span>
+                </div>
+                <span class="text-[10px] text-gray-500 mt-1">नोंदणी क्र. SGR/GM/2026</span>
+              </div>
+            </div>
+
+            <!-- Official Donation Receipt Banner -->
+            <div class="text-center mb-5">
+              <div class="inline-block bg-gradient-to-r from-pinkIdol-600 via-darkVelvet-800 to-pinkIdol-600 text-white text-xs md:text-sm font-bold px-6 py-1.5 rounded-full shadow-md uppercase tracking-wider border border-goldIdol-300">
+                ★ अधिकृत देणगी पावती (OFFICIAL DONATION RECEIPT) ★
+              </div>
+            </div>
+
+            <!-- Metadata Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 bg-amber-50/50 p-3.5 rounded-xl border border-amber-200/80 mb-5 text-xs text-gray-700">
+              <div>
+                <span class="text-gray-500 block">पावती क्र. (Receipt No):</span>
+                <strong class="text-pinkIdol-600 font-mono text-sm">${receiptNo}</strong>
+              </div>
+              <div>
+                <span class="text-gray-500 block">दिनांक (Date):</span>
+                <strong class="text-gray-900 text-sm">${dateStr}</strong>
+              </div>
+              <div>
+                <span class="text-gray-500 block">वेळ (Time):</span>
+                <strong class="text-gray-900 text-sm">१०:३० AM</strong>
+              </div>
+              <div>
+                <span class="text-gray-500 block">आर्थिक वर्ष (F.Y.):</span>
+                <strong class="text-gray-900 text-sm">२०२६ - २०२७</strong>
+              </div>
+            </div>
+
+            <!-- Resident Details Section -->
+            <div class="bg-white p-5 rounded-xl border-2 border-gray-200/80 shadow-sm space-y-3 mb-5 text-sm text-gray-800">
+              <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-100 pb-2">
+                <span class="text-gray-600 min-w-[200px]"><strong>श्री. / श्रीमती (Received with thanks from):</strong></span>
+                <span class="text-gray-900 font-bold text-base md:text-lg border-b-2 border-goldIdol-400 px-2 py-0.5 mt-1 md:mt-0 inline-block font-marathi">
+                  ${record.name || 'निवासी'}
+                </span>
+              </div>
+
+              <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-100 pb-2">
+                <span class="text-gray-600 min-w-[200px]"><strong>इमारत व फ्लॅट (Building & Flat No):</strong></span>
+                <span class="text-gray-900 font-bold bg-pinkIdol-50 px-3 py-1 rounded-md border border-pinkIdol-200 mt-1 md:mt-0 inline-block">
                   Building ${record.building} — Flat No. ${record.flat}
                 </span>
-              </p>
-
-              <p>
-                <strong>भरलेला प्रकार (Payment Mode):</strong> 
-                <span class="font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
-                  ${record.mode || 'Cash / UPI'} ${record.remarks ? `(${record.remarks})` : ''}
-                </span>
-              </p>
-            </div>
-
-            <!-- Amount Box -->
-            <div class="bg-gradient-to-r from-pinkIdol-600 to-darkVelvet-700 text-white rounded-xl p-4 text-center shadow-lg">
-              <p class="text-xs uppercase tracking-wider text-goldIdol-300 font-bold mb-1">वर्गणी / देणगी रक्कम (Amount Paid)</p>
-              <p class="text-3xl font-extrabold text-white font-calligraphy">₹ ${record.paid.toLocaleString('en-IN')}</p>
-              <p class="text-xs text-cream/90 mt-1 font-semibold">(${words})</p>
-            </div>
-          </div>
-
-          <!-- Stamp & Signature Row -->
-          <div class="mt-8 pt-6 border-t-2 border-goldIdol-400/40 flex flex-wrap justify-between items-end gap-4 text-xs font-marathi">
-            <div class="text-center">
-              <div class="w-20 h-20 rounded-full border-2 border-dashed border-pinkIdol-500 flex flex-col items-center justify-center p-1 mx-auto text-[0.65rem] font-bold text-pinkIdol-600 bg-pinkIdol-50">
-                <span>★ SGR 2026 ★</span>
-                <span class="text-[0.6rem] uppercase">गणेशोत्सव</span>
-                <span>MANDAL SEAL</span>
               </div>
-              <p class="text-[0.7rem] text-gray-500 mt-1">अधिकृत मंडळ शिक्का</p>
+
+              <div class="flex flex-col md:flex-row md:items-center justify-between border-b border-gray-100 pb-2">
+                <span class="text-gray-600 min-w-[200px]"><strong>भरणा प्रकार (Payment Mode):</strong></span>
+                <span class="font-semibold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-md border border-emerald-200 mt-1 md:mt-0 inline-block">
+                  ${record.mode || 'Cash / UPI'} ${record.remarks ? `(${record.remarks})` : '• Online Verified'}
+                </span>
+              </div>
+
+              <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <span class="text-gray-600 min-w-[200px]"><strong>कारणास्तव (On Account Of):</strong></span>
+                <span class="text-gray-800 font-medium mt-1 md:mt-0 inline-block">
+                  सार्वजनिक श्री गणेशोत्सव सोहळा २०२६ वर्गणी निधी (Festival Contribution)
+                </span>
+              </div>
             </div>
 
-            <div class="text-center">
-              <p class="font-bold text-gray-900 text-sm mb-1">Harshal Nerkar / Malhar Tambe / Yogesh Ahinave</p>
-              <p class="text-xs text-pinkIdol-600 font-semibold">अध्यक्ष व कार्यकारिणी सदस्य</p>
-              <p class="text-[0.65rem] text-gray-400 mt-0.5">सार्वोदय गार्डन मित्र मंडळ</p>
+            <!-- Amount Highlight Box -->
+            <div class="bg-gradient-to-r from-pinkIdol-600 via-darkVelvet-800 to-pinkIdol-600 text-white rounded-2xl p-5 text-center shadow-lg border-2 border-goldIdol-400 mb-5">
+              <p class="text-xs uppercase tracking-widest text-goldIdol-300 font-bold mb-1">
+                वर्गणी / देणगी रक्कम (AMOUNT PAID & RECEIVED)
+              </p>
+              <p class="text-3xl md:text-4xl font-extrabold text-white font-calligraphy tracking-wide">
+                ₹ ${record.paid.toLocaleString('en-IN')} /-
+              </p>
+              <p class="text-xs md:text-sm text-amber-100 mt-1 font-semibold">
+                (अक्षरी: ${words})
+              </p>
+            </div>
+
+            <!-- Traditional Ashirwad / Blessing Note -->
+            <div class="bg-amber-50/60 border border-amber-200 rounded-xl p-4 text-center text-xs md:text-sm text-gray-700 mb-5">
+              <p class="font-bold text-pinkIdol-700 text-sm mb-1 font-calligraphy">
+                ॥ गणपती बाप्पा मोरया, पुढच्या वर्षी लवकर या ॥
+              </p>
+              <p class="text-gray-600 leading-relaxed">
+                श्री गणेशाच्या कृपाशीर्वादाने आपल्या परिवारास सुख, समाधान, उत्तम आरोग्य व भरभराट लाभो!<br/>
+                गणेशोत्सव २०२६ मध्ये आपले बहुमोल सहकार्य लाभल्याबद्दल सार्वोदय गार्डन मित्र मंडळातर्फे आपले मनःपूर्वक आभार!
+              </p>
             </div>
           </div>
 
-          <!-- Print / Download Button -->
-          <div class="mt-6 text-center no-print border-t border-gray-200 pt-4">
-            <button type="button" onclick="window.printReceipt()" class="btn-primary text-sm !py-2.5 !px-6 font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2 mx-auto">
-              🖨️ फक्त पावती प्रिंट करा / PDF डाऊनलोड (Print / Save Receipt Only)
-            </button>
-            <p class="text-[11px] text-gray-500 mt-1.5 font-sans">★ संपूर्ण वेबसाईट ऐवजी फक्त ही अधिकृत १ पानाची पावती PDF डाऊनलोड / प्रिंट होईल</p>
+          <!-- Bottom Section: Stamps, Signatures and Verification -->
+          <div>
+            <div class="pt-5 border-t-2 border-goldIdol-400/40 flex flex-wrap justify-between items-end gap-4 text-xs font-marathi">
+              <!-- Seal -->
+              <div class="text-center">
+                <div class="w-20 h-20 rounded-full border-2 border-dashed border-pinkIdol-500 flex flex-col items-center justify-center p-1 mx-auto text-[0.65rem] font-bold text-pinkIdol-600 bg-pinkIdol-50 shadow-sm">
+                  <span>★ SGR 2026 ★</span>
+                  <span class="text-[0.6rem] uppercase">गणेशोत्सव</span>
+                  <span>MANDAL SEAL</span>
+                </div>
+                <p class="text-[0.7rem] text-gray-500 mt-1">अधिकृत मंडळ शिक्का</p>
+              </div>
+
+              <!-- Office Address & Date -->
+              <div class="text-center text-[11px] text-gray-500 hidden md:block">
+                <p>कार्यालय: क्लब हाऊस, सार्वोदय गार्डन, ठाणे (प.)</p>
+                <p class="mt-0.5">दिनांक: १२ सप्टेंबर २०२६</p>
+              </div>
+
+              <!-- Signatories -->
+              <div class="text-center md:text-right">
+                <div class="flex items-center justify-center md:justify-end gap-3 mb-2 text-gray-900 font-bold text-xs">
+                  <span>हर्षल नेरकर</span>
+                  <span>•</span>
+                  <span>मल्हार तांबे</span>
+                  <span>•</span>
+                  <span>योगेश अहीनावे</span>
+                </div>
+                <p class="text-xs text-pinkIdol-600 font-bold">अध्यक्ष / सचिव / खजिनदार</p>
+                <p class="text-[11px] text-gray-500 mt-0.5">सार्वोदय गार्डन मित्र मंडळ, ठाणे</p>
+              </div>
+            </div>
+
+            <!-- Official E-Receipt Notice -->
+            <div class="text-center text-[10px] text-gray-400 mt-4 border-t border-gray-100 pt-2">
+              ही संगणकीकृत अधिकृत डिजिटल पावती असून कोणत्याही भौतिक स्वाक्षरीची आवश्यकता नाही. (System Generated Official Society Receipt)
+            </div>
+          </div>
+
+          <!-- Interactive Action Buttons (Hidden on Print & in PDF export) -->
+          <div class="mt-6 text-center no-print border-t-2 border-gray-200 pt-5">
+            <div class="flex flex-wrap items-center justify-center gap-3">
+              <button type="button" id="btn-download-pdf" onclick="window.downloadReceiptPdf('${record.flat}')" class="btn-primary text-sm !py-3 !px-6 font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2 !bg-emerald-600 hover:!bg-emerald-700 text-white rounded-xl transition-all">
+                📥 थेट PDF डाऊनलोड करा (Direct Download PDF)
+              </button>
+
+              <button type="button" onclick="window.printReceipt()" class="btn-primary text-sm !py-3 !px-6 font-bold shadow-lg hover:shadow-xl flex items-center justify-center gap-2 !bg-pinkIdol-600 hover:!bg-pinkIdol-700 text-white rounded-xl transition-all">
+                🖨️ पावती प्रिंट करा (Print Full Page)
+              </button>
+            </div>
+
+            <p class="text-xs text-gray-500 mt-2.5 font-sans">
+              ★ <strong>'थेट PDF डाऊनलोड करा'</strong> वर क्लिक करताच पावती आपोआप <code class="text-pinkIdol-600 font-bold">${receiptNo}.pdf</code> नावाने थेट डाऊनलोड होईल.
+            </p>
           </div>
         </div>
       `;
@@ -1263,7 +1353,113 @@ window.showVarganiPendingModal = function(record) {
 };
 
 // ============================================
-// ISOLATED RECEIPT PRINT / PDF DOWNLOAD
+// DIRECT PDF DOWNLOAD ENGINE (AUTOMATIC FILENAME)
+// ============================================
+window.downloadReceiptPdf = function(flatId) {
+  const receiptElem = document.getElementById('printable-receipt');
+  if (!receiptElem) {
+    window.printReceipt();
+    return;
+  }
+
+  const btnDownload = document.getElementById('btn-download-pdf');
+  const originalHtml = btnDownload ? btnDownload.innerHTML : '';
+  if (btnDownload) {
+    btnDownload.innerHTML = `⏳ PDF तयार होत आहे...`;
+    btnDownload.disabled = true;
+  }
+
+  // Clone receipt and strip buttons / interactive elements
+  const clone = receiptElem.cloneNode(true);
+  clone.querySelectorAll('.no-print').forEach(el => el.remove());
+
+  // Style the clone for full-page A4 PDF rendering (210mm x 297mm)
+  clone.id = 'printable-receipt-pdf-clone';
+  clone.style.width = '794px';
+  clone.style.minHeight = '1120px';
+  clone.style.boxSizing = 'border-box';
+  clone.style.padding = '36px 40px';
+  clone.style.margin = '0 auto';
+  clone.style.backgroundColor = '#ffffff';
+  clone.style.display = 'flex';
+  clone.style.flexDirection = 'column';
+  clone.style.justifyContent = 'space-between';
+  clone.style.border = '4px double #d4af37';
+  clone.style.outline = '1.5px solid #751031';
+  clone.style.outlineOffset = '-6px';
+  clone.style.borderRadius = '8px';
+
+  // Create isolated container off-screen
+  const container = document.createElement('div');
+  container.style.position = 'fixed';
+  container.style.left = '-9999px';
+  container.style.top = '0';
+  container.style.width = '794px';
+  container.style.background = '#ffffff';
+  container.style.zIndex = '-1000';
+  container.appendChild(clone);
+  document.body.appendChild(container);
+
+  const cleanFlat = (flatId || 'flat').replace(/[^a-zA-Z0-9_-]/g, '_');
+  const filename = `Sarvoday_Garden_Vargani_Receipt_Flat_${cleanFlat}.pdf`;
+
+  const opt = {
+    margin: [2, 2, 2, 2],
+    filename: filename,
+    image: { type: 'jpeg', quality: 0.98 },
+    html2canvas: {
+      scale: 2,
+      useCORS: true,
+      logging: false,
+      scrollY: 0,
+      windowWidth: 800
+    },
+    jsPDF: {
+      unit: 'mm',
+      format: 'a4',
+      orientation: 'portrait'
+    }
+  };
+
+  const cleanup = () => {
+    container.remove();
+    if (btnDownload) {
+      btnDownload.innerHTML = `✅ ${filename} डाऊनलोड झाले!`;
+      btnDownload.disabled = false;
+      setTimeout(() => {
+        btnDownload.innerHTML = originalHtml;
+      }, 3500);
+    }
+  };
+
+  if (window.html2pdf) {
+    window.html2pdf()
+      .set(opt)
+      .from(clone)
+      .save()
+      .then(cleanup)
+      .catch(err => {
+        console.error('html2pdf generation error:', err);
+        container.remove();
+        if (btnDownload) {
+          btnDownload.innerHTML = originalHtml;
+          btnDownload.disabled = false;
+        }
+        window.printReceipt();
+      });
+  } else {
+    // If html2pdf is not loaded, fallback to print
+    container.remove();
+    if (btnDownload) {
+      btnDownload.innerHTML = originalHtml;
+      btnDownload.disabled = false;
+    }
+    window.printReceipt();
+  }
+};
+
+// ============================================
+// ISOLATED FULL-PAGE RECEIPT PRINT
 // ============================================
 window.printReceipt = function() {
   const receiptElem = document.getElementById('printable-receipt');
@@ -1329,7 +1525,7 @@ window.printReceipt = function() {
       <style>
         @page {
           size: A4 portrait;
-          margin: 8mm;
+          margin: 6mm;
         }
         * {
           box-sizing: border-box;
@@ -1338,30 +1534,40 @@ window.printReceipt = function() {
         }
         html, body {
           margin: 0 !important;
-          padding: 8px !important;
+          padding: 0 !important;
           background: #ffffff !important;
           color: #111827 !important;
           font-family: 'Noto Sans Devanagari', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
+          width: 100% !important;
+          height: 100% !important;
         }
         .receipt-container {
-          width: 100%;
-          max-width: 680px;
-          margin: 0 auto;
+          width: 100% !important;
+          max-width: 100% !important;
+          margin: 0 !important;
+          padding: 0 !important;
         }
         #printable-receipt {
-          border: 2px solid #E5C158 !important;
-          border-radius: 1.25rem !important;
+          display: flex !important;
+          flex-direction: column !important;
+          justify-content: space-between !important;
+          width: 100% !important;
+          max-width: 100% !important;
+          min-height: 280mm !important;
+          box-sizing: border-box !important;
+          margin: 0 !important;
+          padding: 24px 28px !important;
+          border: 4px double #d4af37 !important;
+          outline: 1.5px solid #751031 !important;
+          outline-offset: -6px !important;
+          border-radius: 8px !important;
           background: #ffffff !important;
           box-shadow: none !important;
-          padding: 24px !important;
           page-break-inside: avoid !important;
           break-inside: avoid !important;
-          position: relative !important;
         }
         .text-pinkIdol-600 { color: #9E1B44 !important; }
+        .text-pinkIdol-700 { color: #751031 !important; }
         .bg-pinkIdol-50 { background-color: #FFF0F5 !important; }
         .bg-pinkIdol-500 { background-color: #C42B5B !important; }
         .bg-pinkIdol-600 { background-color: #9E1B44 !important; }
@@ -1369,6 +1575,7 @@ window.printReceipt = function() {
         .border-pinkIdol-500 { border-color: #C42B5B !important; }
         .border-goldIdol-300 { border-color: #FFD700 !important; }
         .border-goldIdol-400 { border-color: #E5C158 !important; }
+        .border-goldIdol-500 { border-color: #D4AF37 !important; }
         .text-goldIdol-300 { color: #FFD700 !important; }
         .text-darkVelvet-900 { color: #1A030F !important; }
         .font-calligraphy { font-family: 'Yatra One', 'Rozha One', 'Kalam', 'Noto Sans Devanagari', serif !important; }
