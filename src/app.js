@@ -203,11 +203,11 @@ const archiveYears = {
 };
 
 const members = [
-  { name: 'Harshal Nerkar', phone: '9320091566', role: { mr: 'अध्यक्ष / कोर कमिटी प्रमुख', hi: 'अध्यक्ष / कोर कमेटी प्रमुख', en: 'President / Core Lead' }, flat: 'Sarvoday Garden' },
-  { name: 'Malhar Tambe', phone: '9004604944', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Member' }, flat: 'Sarvoday Garden' },
-  { name: 'Yogesh Ahinave', phone: '9870701239', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Member' }, flat: 'Sarvoday Garden' },
-  { name: 'Santosh Hande', phone: '', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Member' }, flat: 'Sarvoday Garden' },
-  { name: 'Sachin Jadhav', phone: '', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Member' }, flat: 'Sarvoday Garden' },
+  { name: 'Harshal Nerkar', phone: '', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Committee Member' }, flat: 'Sarvoday Garden' },
+  { name: 'Malhar Tambe', phone: '', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Committee Member' }, flat: 'Sarvoday Garden' },
+  { name: 'Yogesh Ahinave', phone: '', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Committee Member' }, flat: 'Sarvoday Garden' },
+  { name: 'Santosh Hande', phone: '', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Committee Member' }, flat: 'Sarvoday Garden' },
+  { name: 'Sachin Jadhav', phone: '', role: { mr: 'कोर कमिटी सदस्य', hi: 'कोर कमेटी सदस्य', en: 'Core Committee Member' }, flat: 'Sarvoday Garden' },
 ];
 
 const finance = {
@@ -1244,7 +1244,7 @@ function renderReceipts() {
                   <span>•</span>
                   <span>योगेश अहीनावे</span>
                 </div>
-                <p class="text-[11px] text-pinkIdol-600 font-bold">अध्यक्ष / सचिव / खजिनदार</p>
+                <p class="text-[11px] text-pinkIdol-600 font-bold">कोर कमिटी सदस्य (Core Committee Members)</p>
                 <p class="text-[10px] text-gray-500 mt-0.5">सार्वोदय गार्डन मित्र मंडळ, ठाणे</p>
               </div>
             </div>
@@ -1337,7 +1337,7 @@ window.showVarganiPendingModal = function(record) {
 
             <div class="grid grid-cols-2 gap-2">
               <a href="tel:9320091566" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition-colors no-underline">
-                <span>📞</span> <span>हर्षल नेरकर (अध्यक्ष)</span>
+                <span>📞</span> <span>हर्षल नेरकर (कोर कमिटी सदस्य)</span>
               </a>
               <button type="button" onclick="document.getElementById('vargani-pending-modal').remove()" class="bg-gray-800 hover:bg-gray-900 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center transition-colors">
                 समजले (Close)
@@ -1758,7 +1758,7 @@ function renderContact() {
               <div>
                 <h4 class="font-bold text-gray-900 text-base">Harshal Nerkar</h4>
                 <p class="text-xs font-semibold text-pinkIdol-600 bg-pinkIdol-50 px-2.5 py-0.5 rounded-full inline-block mt-0.5 border border-pinkIdol-200">
-                  अध्यक्ष / कोर कमिटी प्रमुख
+                  कोर कमिटी सदस्य
                 </p>
               </div>
             </div>
@@ -1803,13 +1803,13 @@ function renderContact() {
 
           <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2">
             <span class="text-sm font-bold text-gray-800 flex items-center gap-1.5">
-              📞 <a href="tel:9004604944" class="hover:text-pinkIdol-600 hover:underline">9004604944</a>
+              📞 <a href="tel:9320091566" class="hover:text-pinkIdol-600 hover:underline">9320091566</a>
             </span>
             <div class="flex items-center gap-2">
-              <a href="tel:9004604944" class="btn-primary !py-1.5 !px-3 !text-xs flex items-center gap-1">
+              <a href="tel:9320091566" class="btn-primary !py-1.5 !px-3 !text-xs flex items-center gap-1">
                 📞 कॉल करा
               </a>
-              <a href="https://wa.me/919004604944?text=Hello%20Malhar%20Ji%2C%20I%20have%20a%20query%2Fsuggestion%20regarding%20Sarvoday%20Garden%20Ganeshotsav%202026." target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-1.5 px-3 rounded-lg text-xs flex items-center gap-1 transition-colors no-underline">
+              <a href="https://wa.me/919320091566?text=Hello%20Malhar%20Ji%2C%20I%20have%20a%20query%2Fsuggestion%20regarding%20Sarvoday%20Garden%20Ganeshotsav%202026." target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-1.5 px-3 rounded-lg text-xs flex items-center gap-1 transition-colors no-underline">
                 💬 WhatsApp
               </a>
             </div>
@@ -1837,13 +1837,13 @@ function renderContact() {
 
           <div class="mt-4 pt-3 border-t border-gray-100 flex flex-wrap items-center justify-between gap-2">
             <span class="text-sm font-bold text-gray-800 flex items-center gap-1.5">
-              📞 <a href="tel:9870701239" class="hover:text-pinkIdol-600 hover:underline">9870701239</a>
+              📞 <a href="tel:9320091566" class="hover:text-pinkIdol-600 hover:underline">9320091566</a>
             </span>
             <div class="flex items-center gap-2">
-              <a href="tel:9870701239" class="btn-primary !py-1.5 !px-3 !text-xs flex items-center gap-1">
+              <a href="tel:9320091566" class="btn-primary !py-1.5 !px-3 !text-xs flex items-center gap-1">
                 📞 कॉल करा
               </a>
-              <a href="https://wa.me/919870701239?text=Hello%20Yogesh%20Ji%2C%20I%20have%20a%20query%2Fsuggestion%20regarding%20Sarvoday%20Garden%20Ganeshotsav%202026." target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-1.5 px-3 rounded-lg text-xs flex items-center gap-1 transition-colors no-underline">
+              <a href="https://wa.me/919320091566?text=Hello%20Yogesh%20Ji%2C%20I%20have%20a%20query%2Fsuggestion%20regarding%20Sarvoday%20Garden%20Ganeshotsav%202026." target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-1.5 px-3 rounded-lg text-xs flex items-center gap-1 transition-colors no-underline">
                 💬 WhatsApp
               </a>
             </div>
@@ -1943,15 +1943,9 @@ function renderContact() {
               📧 ईमेल द्वारे पाठवा (Send via Email)
             </button>
 
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
-              <button type="button" onclick="window.shareContactWhatsApp('9320091566')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-[0.7rem] text-center flex items-center justify-center gap-1.5 transition-colors">
-                💬 हर्शल नेरकर
-              </button>
-              <button type="button" onclick="window.shareContactWhatsApp('9004604944')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-[0.7rem] text-center flex items-center justify-center gap-1.5 transition-colors">
-                💬 मल्हार तांबे
-              </button>
-              <button type="button" onclick="window.shareContactWhatsApp('9870701239')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-3 rounded-xl text-xs sm:text-[0.7rem] text-center flex items-center justify-center gap-1.5 transition-colors">
-                💬 योगेश अहिनावे
+            <div class="pt-2">
+              <button type="button" onclick="window.shareContactWhatsApp('9320091566')" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-xs sm:text-sm text-center flex items-center justify-center gap-2 transition-colors shadow-md">
+                💬 मंडळाच्या व्हॉट्सॲपवर पाठवा (WhatsApp Mandal: 9320091566)
               </button>
             </div>
           </div>
@@ -1959,14 +1953,6 @@ function renderContact() {
 
         <!-- Status Container -->
         <div id="contact-form-status"></div>
-
-        <!-- Tracker Analytics Quick Button -->
-        <div class="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs">
-          <span class="text-gray-500 font-mono text-xs sm:text-[0.7rem] truncate w-full sm:w-auto">📧 रिपोर्ट: harshalnerkar66@gmail.com</span>
-          <button type="button" onclick="window.openTrackerModal()" class="w-full sm:w-auto bg-gray-900 hover:bg-black text-goldIdol-300 font-bold px-4 py-2.5 rounded-xl text-xs flex items-center justify-center gap-2 transition-all shadow-sm">
-            📊 ट्रॅफिक & व्हिजिटर ट्रॅकर
-          </button>
-        </div>
       </div>
     </div>`;
 
@@ -2004,188 +1990,67 @@ function getDeviceType() {
   const ua = navigator.userAgent;
   if (/mobile/i.test(ua)) return 'Mobile Device';
   if (/ipad|tablet/i.test(ua)) return 'Tablet';
-  return 'Desktop / Laptop';
+  return 'Desktop / Laptop PC';
+}
+
+function sendSilentVisitorNotification() {
+  // Guard against duplicate emails in the same browser session
+  if (sessionStorage.getItem('sg_visitor_opened_alert_sent')) return;
+
+  const timestamp = new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata', dateStyle: 'full', timeStyle: 'medium' });
+  const channel = getTrafficSource();
+  const device = getDeviceType();
+  const screenRes = `${window.innerWidth}x${window.innerHeight}`;
+  const pageUrl = window.location.href;
+  const referrer = document.referrer || 'Direct / None';
+
+  const alertSubject = `🔔 [Live Visitor Alert] Someone opened Sarvoday Garden Ganeshotsav 2026`;
+  const alertBody = `Sarvoday Garden Mitra Mandal — Real-time Website Open Alert
+
+A visitor has just opened the Sarvoday Garden Ganeshotsav 2026 website.
+
+--------------------------------------------------
+VISITOR DETAILS:
+--------------------------------------------------
+• Date & Time (IST): ${timestamp}
+• Traffic Channel / Source: ${channel}
+• Device: ${device}
+• Screen Dimensions: ${screenRes}
+• Landing Page URL: ${pageUrl}
+• Referrer URL: ${referrer}
+• Browser User Agent: ${navigator.userAgent}
+
+--------------------------------------------------
+Recipient: harshalnerkar66@gmail.com
+This is a silent automated background notification sent immediately upon site opening.`;
+
+  try {
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: 'c7c251bb-20e4-41d3-a0e2-df113d806a6c',
+        subject: alertSubject,
+        from_name: 'Sarvoday Garden Website Tracker',
+        email: 'harshalnerkar66@gmail.com',
+        message: alertBody
+      })
+    })
+    .then(() => {
+      sessionStorage.setItem('sg_visitor_opened_alert_sent', '1');
+    })
+    .catch(() => {
+      sessionStorage.setItem('sg_visitor_opened_alert_sent', '1');
+    });
+  } catch (e) {
+    sessionStorage.setItem('sg_visitor_opened_alert_sent', '1');
+  }
 }
 
 function initWebsiteTracker() {
-  if (!visitedSections) visitedSections = new Set(['#home']);
-  window.addEventListener('hashchange', () => {
-    if (window.location.hash) {
-      visitedSections.add(window.location.hash);
-      recordAnalyticsEvent();
-    }
-  });
-  if (window.location.hash) visitedSections.add(window.location.hash);
-
-  setInterval(() => {
-    activeSecondsSpent++;
-    if (activeSecondsSpent % 5 === 0) {
-      recordAnalyticsEvent();
-    }
-  }, 1000);
-
-  recordAnalyticsEvent();
+  // Silently trigger real-time email notification to Harshal on site open
+  sendSilentVisitorNotification();
 }
-
-function recordAnalyticsEvent() {
-  const channel = getTrafficSource();
-  const logs = JSON.parse(localStorage.getItem('sg_visitor_analytics_v1') || '[]');
-  if (!visitedSections) visitedSections = new Set(['#home']);
-  
-  const currentSession = {
-    sessionId: 'SESS-' + (trackerStartTime || Date.now()),
-    date: new Date().toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
-    channel: channel,
-    device: getDeviceType(),
-    screen: `${window.innerWidth}x${window.innerHeight}`,
-    durationSeconds: activeSecondsSpent || 0,
-    durationFormatted: Math.floor((activeSecondsSpent || 0) / 60) + 'm ' + ((activeSecondsSpent || 0) % 60) + 's',
-    sections: Array.from(visitedSections),
-    targetEmail: 'harshalnerkar66@gmail.com'
-  };
-
-  const existingIdx = logs.findIndex(s => s.sessionId === currentSession.sessionId);
-  if (existingIdx >= 0) {
-    logs[existingIdx] = currentSession;
-  } else {
-    logs.unshift(currentSession);
-  }
-  
-  if (logs.length > 50) logs.pop();
-  localStorage.setItem('sg_visitor_analytics_v1', JSON.stringify(logs));
-}
-
-window.sendTrackerReportToEmail = function() {
-  const logs = JSON.parse(localStorage.getItem('sg_visitor_analytics_v1') || '[]');
-  const channel = getTrafficSource();
-  const durationFormatted = Math.floor(activeSecondsSpent / 60) + 'm ' + (activeSecondsSpent % 60) + 's';
-  const sectionsList = Array.from(visitedSections).join(', ') || '#home';
-
-  const channelCounts = {};
-  logs.forEach(s => {
-    channelCounts[s.channel] = (channelCounts[s.channel] || 0) + 1;
-  });
-  const channelSummary = Object.entries(channelCounts)
-    .map(([ch, count]) => `• ${ch}: ${count} visit(s)`)
-    .join('\n');
-
-  const subject = `[Website Traffic & Tracker Report] Sarvoday Garden Ganeshotsav 2026`;
-  const body = `Sarvoday Garden Mitra Mandal — Website Traffic & Visitor Analytics Report
-
---------------------------------------------------
-TARGET RECIPIENT EMAIL: harshalnerkar66@gmail.com
-REPORT GENERATED: ${new Date().toLocaleString('en-IN')}
---------------------------------------------------
-
-📊 CURRENT ACTIVE VISITOR SESSION:
-• Traffic Channel Source: ${channel}
-• Device / Resolution: ${getDeviceType()} (${window.innerWidth}x${window.innerHeight})
-• Time Spent on Site: ${durationFormatted} (${activeSecondsSpent} seconds)
-• Sections Visited in Session: ${sectionsList}
-
---------------------------------------------------
-📈 TOTAL TRAFFIC & CHANNEL BREAKDOWN (${logs.length} Total Recorded Sessions):
-${channelSummary || '• Direct Visit: 1 visit'}
-
---------------------------------------------------
-📜 RECENT VISITOR SESSIONS:
-${logs.slice(0, 5).map((s, i) => `#${i+1} [${s.date}] Channel: ${s.channel} | Device: ${s.device} | Time Spent: ${s.durationFormatted} | Sections: ${s.sections.join(', ')}`).join('\n\n')}
-
---------------------------------------------------
-Report automatically compiled by Sarvoday Garden Ganeshotsav Website Tracker.
-Target Recipient: harshalnerkar66@gmail.com`;
-
-  const mailtoUrl = `mailto:harshalnerkar66@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  window.open(mailtoUrl, '_blank');
-};
-
-window.openTrackerModal = function() {
-  const channel = getTrafficSource();
-  const durationFormatted = Math.floor(activeSecondsSpent / 60) + 'm ' + (activeSecondsSpent % 60) + 's';
-  const logs = JSON.parse(localStorage.getItem('sg_visitor_analytics_v1') || '[]');
-
-  const existingModal = document.getElementById('tracker-analytics-modal');
-  if (existingModal) existingModal.remove();
-
-  const modalHtml = `
-  <div id="tracker-analytics-modal" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white rounded-3xl max-w-2xl w-full p-5 md:p-6 max-h-[90vh] overflow-y-auto shadow-2xl border border-goldIdol-300">
-      <div class="flex items-start justify-between border-b border-gray-200 pb-4 mb-4 gap-2">
-        <div class="flex-1">
-          <h3 class="text-lg sm:text-xl font-bold font-display text-darkVelvet-900 flex flex-wrap items-center gap-1.5 sm:gap-2 leading-tight">
-            📊 वेबसाईट व्हिजिटर आणि ट्रॅफिक ट्रॅकर
-          </h3>
-          <p class="text-[0.65rem] sm:text-xs text-gray-500 font-mono mt-1 break-all">रिपोर्ट ईमेल: harshalnerkar66@gmail.com</p>
-        </div>
-        <button onclick="document.getElementById('tracker-analytics-modal').remove()" class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-100 text-gray-600 hover:bg-red-100 hover:text-red-600 font-bold flex items-center justify-center">✕</button>
-      </div>
-
-      <!-- Current Session Live Card -->
-      <div class="bg-gradient-to-r from-pinkIdol-600 to-darkVelvet-900 text-white rounded-2xl p-4 md:p-5 mb-5 shadow-lg">
-        <span class="bg-amber-400 text-darkVelvet-950 font-bold text-[0.6rem] sm:text-[0.65rem] px-2.5 py-0.5 rounded-full uppercase tracking-wider">🔴 Active Visitor Tracking</span>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-4">
-          <div class="overflow-hidden">
-            <p class="text-[0.65rem] sm:text-[0.7rem] text-pink-200">ट्रॅफिक चॅनेल (Channel)</p>
-            <p class="font-bold text-xs sm:text-sm truncate" title="${channel}">${channel}</p>
-          </div>
-          <div>
-            <p class="text-[0.7rem] text-pink-200">घालवलेला वेळ (Time Spent)</p>
-            <p class="font-bold text-sm text-goldIdol-300">${durationFormatted}</p>
-          </div>
-          <div>
-            <p class="text-[0.7rem] text-pink-200">डिव्हाइस (Device)</p>
-            <p class="font-bold text-sm">${getDeviceType()}</p>
-          </div>
-          <div>
-            <p class="text-[0.7rem] text-pink-200">स्क्रीन साईज</p>
-            <p class="font-bold text-sm">${window.innerWidth}x${window.innerHeight}</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Channel Summary -->
-      <div class="mb-5">
-        <h4 class="font-bold text-sm text-gray-800 mb-2">📈 चॅनेल ट्रॅफिक स्रोत (Traffic Channels & Referral)</h4>
-        <div class="bg-gray-50 rounded-xl p-3 border border-gray-200 text-xs space-y-1.5 font-mono text-gray-700">
-          <p>• <strong>WhatsApp Channel:</strong> व्हॉट्सॲप मेसेज / ग्रुप लिंक द्वारे आलेले युझर्स (?utm_source=whatsapp)</p>
-          <p>• <strong>Direct Visit:</strong> ब्राऊझरमध्ये थेट URL टाईप करून आलेले सदस्य</p>
-          <p>• <strong>QR Code Scan:</strong> नोटीस बोर्डावरील क्यूआर कोड स्कॅन</p>
-        </div>
-      </div>
-
-      <!-- Recent Sessions Log -->
-      <div class="mb-5">
-        <h4 class="font-bold text-xs sm:text-sm text-gray-800 mb-2">📜 मागील व्हिजिटर सेशन्स (${logs.length} नोंदणीकृत सेशन्स)</h4>
-        <div class="max-h-48 overflow-y-auto space-y-2.5 text-xs">
-          ${logs.map(s => `
-            <div class="bg-gray-50 p-3 rounded-xl border border-gray-200 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2">
-              <div>
-                <div class="flex flex-wrap items-center gap-1.5 mb-1">
-                  <span class="font-bold text-pinkIdol-600 text-[0.75rem]">${s.channel}</span>
-                  <span class="text-gray-500 font-mono text-[0.65rem] bg-gray-200 px-1.5 py-0.5 rounded">${s.device}</span>
-                </div>
-                <div class="text-[0.65rem] sm:text-[0.7rem] text-gray-500 break-all leading-tight">विभाग: ${s.sections.join(', ')}</div>
-              </div>
-              <div class="text-left sm:text-right flex sm:flex-col justify-between sm:justify-center items-center sm:items-end">
-                <span class="font-bold text-darkVelvet-900 text-[0.75rem] sm:text-sm">${s.durationFormatted}</span>
-                <div class="text-[0.6rem] text-gray-400 mt-0.5">${s.date}</div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-
-      <!-- Action Button -->
-      <div class="pt-2">
-        <button onclick="window.sendTrackerReportToEmail()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
-          📧 हा ट्रॅकर रिपोर्ट harshalnerkar66@gmail.com वर ईमेल द्वारे पाठवा
-        </button>
-      </div>
-    </div>
-  </div>`;
-
-  document.body.insertAdjacentHTML('beforeend', modalHtml);
-};
 
 // ============================================
 // LIGHTBOX
