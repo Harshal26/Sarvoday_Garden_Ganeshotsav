@@ -128,17 +128,70 @@ const celebrationsGallery = [
 ];
 
 const events = [
-  { date: '2026-09-14', name: { mr: 'गणपती स्थापना व प्राणप्रतिष्ठा', hi: 'गणपति स्थापना और प्राणप्रतिष्ठा', en: 'Ganpati Sthapana & Pranpratishtha' }, time: '10:00 AM', cat: 'Sthapana' },
-  { date: '2026-09-14', name: { mr: 'सायंकाळची महाआरती', hi: 'शाम की महाआरती', en: 'Evening Maha Aarti' }, time: '7:30 PM', cat: 'Aarti' },
-  { date: '2026-09-15', name: { mr: 'सकाळची आरती व अथर्वशीर्ष पाठ', hi: 'सुबह की आरती', en: 'Morning Aarti & Atharvashirsha' }, time: '7:30 AM', cat: 'Aarti' },
-  { date: '2026-09-15', name: { mr: 'मुलांची रांगोळी स्पर्धा', hi: 'बच्चों की रांगोली प्रतियोगिता', en: 'Rangoli Competition' }, time: '4:00 PM', cat: 'Cultural' },
-  { date: '2026-09-16', name: { mr: 'चित्रकला व वकृत्व स्पर्धा', hi: 'चित्रकला प्रतियोगिता', en: 'Drawing Competition (Kids)' }, time: '4:00 PM', cat: 'Children' },
-  { date: '2026-09-17', name: { mr: 'महिलांसाठी हळदी-कुंकू व मेणबत्ती खेळ', hi: 'महिला हल्दी-कुंकू', en: 'Haldi Kumkum & Games' }, time: '6:00 PM', cat: 'Cultural' },
-  { date: '2026-09-18', name: { mr: 'सोसायटी सांस्कृतिक संध्याकाळ', hi: 'सांस्कृतिक कार्यक्रम', en: 'Society Cultural Night' }, time: '7:30 PM', cat: 'Cultural' },
-  { date: '2026-09-19', name: { mr: 'मोदक महाप्रसाद वितरण', hi: 'मोदक महाप्रसाद', en: 'Modak Mahaprasad' }, time: '6:00 PM', cat: 'Aarti' },
-  { date: '2026-09-20', name: { mr: 'सत्यनारायण महापूजा व महाआरती', hi: 'सत्यनारायण महापूजा', en: 'Satyanarayan Mahapooja' }, time: '11:00 AM', cat: 'Aarti' },
-  { date: '2026-09-21', name: { mr: 'दांडिया व गरबा महोत्सव', hi: 'डांडिया एवं गरबा नाइट', en: 'Dandiya & Garba Night' }, time: '8:30 PM', cat: 'Cultural' },
-  { date: '2026-09-24', name: { mr: 'उत्तरपूजा व भव्य विसर्जन मिरवणूक', hi: 'उत्तरपूजा एवं विसर्जन जुलूस', en: 'Visarjan Miravuk Procession' }, time: '5:00 PM', cat: 'Visarjan' },
+  {
+    date: '2026-09-14',
+    dayText: '14',
+    monthText: 'Sep',
+    name: {
+      mr: 'श्री गणपती स्थापना व प्राणप्रतिष्ठा',
+      hi: 'श्री गणपति स्थापना एवं प्राणप्रतिष्ठा',
+      en: 'Shree Ganpati Sthapana & Pranpratishtha'
+    },
+    time: {
+      mr: 'सकाळी १०:०० वा.',
+      hi: 'सुबह १०:०० बजे',
+      en: 'Morning 10:00 AM'
+    },
+    cat: 'Sthapana',
+    desc: {
+      mr: 'बाप्पांची पारंपरिक पद्धतीने विधीवत स्थापना व षोडशोपचार पूजा (१४ सप्टेंबर २०२६)',
+      hi: 'पारंपरिक विधि से बप्पा की स्थापना एवं पूजन (14 सितंबर 2026)',
+      en: 'Auspicious Sthapana & Pranpratishtha Pooja of Bappa (14th Sept 2026)'
+    }
+  },
+  {
+    date: '2026-09-14',
+    dayText: '14-19',
+    monthText: 'Sep',
+    name: {
+      mr: 'दैनिक सायंकाळची महाआरती (दररोज)',
+      hi: 'दैनिक सांध्य महाआरती (प्रतिदिन)',
+      en: 'Daily Evening Maha Aarti (Every Day)'
+    },
+    time: {
+      mr: 'दररोज रात्री ८:०० ते ८:३० वा.',
+      hi: 'प्रतिदिन रात्रि ८:०० से ८:३० बजे',
+      en: 'Every Day 8:00 PM – 8:30 PM'
+    },
+    cat: 'Aarti',
+    datesList: ['14 Sep', '15 Sep', '16 Sep', '17 Sep', '18 Sep', '19 Sep'],
+    desc: {
+      mr: '१४ ते १९ सप्टेंबर दरम्यान दररोज संध्याकाळी ८:०० ते ८:३० वा. महाआरती संपन्न होईल',
+      hi: '14 से 19 सितंबर तक प्रतिदिन शाम 8:00 से 8:30 बजे महाआरती संपन्न होगी',
+      en: 'Performed daily every evening at 8:00 PM - 8:30 PM (14th to 19th Sept)'
+    }
+  },
+  {
+    date: '2026-09-19',
+    dayText: '19',
+    monthText: 'Sep',
+    name: {
+      mr: 'उत्तरपूजा व भव्य विसर्जन मिरवणूक',
+      hi: 'उत्तरपूजा एवं भव्य विसर्जन जुलूस',
+      en: 'Uttarpooja & Ganpati Visarjan Procession'
+    },
+    time: {
+      mr: 'संध्याकाळी ५:०० वा. पासून',
+      hi: 'शाम ५:०० बजे से',
+      en: 'Evening 5:00 PM onwards'
+    },
+    cat: 'Visarjan',
+    desc: {
+      mr: 'ढोल-ताशांच्या गजरात व गुलालाच्या उधळणीत बाप्पांना भावपूर्ण निरोप (१९ सप्टेंबर २०२६)',
+      hi: 'ढोल-ताशों के साथ बप्पा को भावपूर्ण विदाई (19 सितंबर 2026)',
+      en: 'Grand farewell procession and Visarjan with Dhol Tasha (19th Sept 2026)'
+    }
+  }
 ];
 
 const archiveYears = {
@@ -365,30 +418,66 @@ function renderEvents() {
   const cats = ['All', ...new Set(events.map(e => e.cat))];
   let active = 'All';
 
-  filters.innerHTML = cats.map(c => `<button class="filter-tab ${c==='All'?'active':''}" data-cat="${c}">${c}</button>`).join('');
-  filters.querySelectorAll('.filter-tab').forEach(btn => btn.addEventListener('click', () => {
-    filters.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    active = btn.dataset.cat;
-    draw();
-  }));
+  const catLabels = {
+    All: { mr: 'सर्व (All)', hi: 'सभी (All)', en: 'All' },
+    Sthapana: { mr: 'स्थापना', hi: 'स्थापना', en: 'Sthapana' },
+    Aarti: { mr: 'आरती', hi: 'आरती', en: 'Aarti' },
+    Visarjan: { mr: 'विसर्जन', hi: 'विसर्जन', en: 'Visarjan' }
+  };
+
+  if (filters) {
+    filters.innerHTML = cats.map(c => {
+      const label = (catLabels[c] && catLabels[c][lang]) || c;
+      return `<button class="filter-tab ${c === 'All' ? 'active' : ''}" data-cat="${c}">${label}</button>`;
+    }).join('');
+
+    filters.querySelectorAll('.filter-tab').forEach(btn => btn.addEventListener('click', () => {
+      filters.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      active = btn.dataset.cat;
+      draw();
+    }));
+  }
 
   function draw() {
     const filtered = active === 'All' ? events : events.filter(e => e.cat === active);
     grid.innerHTML = filtered.map(e => {
-      const d = new Date(e.date);
-      return `<div class="event-card visible">
-        <div class="flex items-start gap-3">
-          <div class="text-center min-w-[3.5rem] bg-pinkIdol-50 rounded-lg p-2 border border-pinkIdol-200">
-            <div class="text-xl font-bold text-pinkIdol-600 font-calligraphy">${d.getDate()}</div>
-            <div class="text-xs text-pinkIdol-700 font-semibold">${d.toLocaleDateString('en',{month:'short'})}</div>
-          </div>
-          <div class="flex-1">
-            <h3 class="font-bold text-gray-900 font-marathi">${e.name[lang] || e.name.en}</h3>
-            <p class="text-sm text-gray-500 mt-0.5">🕐 ${e.time}</p>
-            <span class="inline-block mt-1 text-xs px-2.5 py-0.5 rounded-full bg-pinkIdol-100 text-pinkIdol-700 font-bold">${e.cat}</span>
+      const d = new Date(e.date + 'T12:00:00');
+      const dayDisplay = e.dayText || d.getDate();
+      const monthDisplay = e.monthText || d.toLocaleDateString('en', { month: 'short' });
+      const timeDisplay = typeof e.time === 'object' ? (e.time[lang] || e.time.en) : e.time;
+      const descDisplay = e.desc ? (e.desc[lang] || e.desc.en) : '';
+      const catDisplay = (catLabels[e.cat] && catLabels[e.cat][lang]) || e.cat;
+
+      return `<div class="event-card visible flex flex-col justify-between">
+        <div>
+          <div class="flex items-start gap-3">
+            <div class="text-center min-w-[3.75rem] bg-pinkIdol-50 rounded-xl p-2.5 border border-pinkIdol-200 shadow-sm shrink-0">
+              <div class="text-lg md:text-xl font-bold text-pinkIdol-600 font-calligraphy leading-tight">${dayDisplay}</div>
+              <div class="text-xs text-pinkIdol-700 font-semibold uppercase tracking-wider">${monthDisplay}</div>
+            </div>
+            <div class="flex-1">
+              <div class="flex items-center justify-between gap-2 flex-wrap mb-1">
+                <h3 class="font-bold text-gray-900 font-marathi text-base md:text-lg">${e.name[lang] || e.name.en}</h3>
+                <span class="inline-block text-xs px-2.5 py-0.5 rounded-full bg-pinkIdol-100 text-pinkIdol-700 font-bold border border-pinkIdol-200/60">${catDisplay}</span>
+              </div>
+              <p class="text-sm font-semibold text-pinkIdol-700 flex items-center gap-1.5 mt-1 font-marathi">
+                <span>🕐</span> <span>${timeDisplay}</span>
+              </p>
+              ${descDisplay ? `<p class="text-xs text-gray-600 mt-2 leading-relaxed font-marathi">${descDisplay}</p>` : ''}
+            </div>
           </div>
         </div>
+        ${e.datesList ? `
+          <div class="mt-3 pt-3 border-t border-gray-100">
+            <div class="text-[11px] text-gray-500 font-semibold mb-1.5 font-marathi">
+              ${lang === 'mr' ? 'आरती दिवस (१४ ते १९ सप्टेंबर):' : (lang === 'hi' ? 'आरती के दिन (14 से 19 सितंबर):' : 'Aarti Dates (14th - 19th Sept):')}
+            </div>
+            <div class="flex flex-wrap gap-1">
+              ${e.datesList.map(dt => `<span class="text-[11px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-900 font-semibold border border-amber-200">${dt}</span>`).join('')}
+            </div>
+          </div>
+        ` : ''}
       </div>`;
     }).join('');
   }
